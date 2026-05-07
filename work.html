@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Work - SU STUDIO</title>
+    <meta name="description" content="Selected work by SU STUDIO." />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #010203;
+        --fg: #f2f4ef;
+        --muted: rgba(242, 244, 239, 0.56);
+        --soft: rgba(242, 244, 239, 0.68);
+        --font-en: Inter, Helvetica, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      html { background: var(--bg); }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(ellipse at 72% 12%, rgba(28, 78, 102, 0.2), transparent 34rem),
+          radial-gradient(ellipse at 20% 62%, rgba(120, 126, 86, 0.12), transparent 38rem),
+          linear-gradient(180deg, #010203 0%, #030405 52%, #010101 100%);
+        color: var(--fg);
+        font-family: var(--font-en);
+        font-weight: 400;
+        letter-spacing: 0.012em;
+      }
+
+      body::before {
+        position: fixed;
+        inset: -18%;
+        z-index: -2;
+        content: "";
+        background:
+          radial-gradient(ellipse at 72% 18%, transparent 0 28%, rgba(132, 213, 235, 0.13) 45%, rgba(15, 82, 111, 0.1) 58%, transparent 74%),
+          radial-gradient(ellipse at 22% 78%, transparent 0 34%, rgba(120, 126, 86, 0.11) 52%, transparent 74%);
+        filter: blur(52px);
+        opacity: 0.78;
+      }
+
+      body::after {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        background-image:
+          repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.024) 0 1px, transparent 1px 5px),
+          radial-gradient(circle at 18% 34%, rgba(255, 255, 255, 0.12) 0 0.55px, transparent 1px),
+          radial-gradient(circle at 76% 58%, rgba(255, 255, 255, 0.08) 0 0.55px, transparent 1px);
+        background-size: auto, 29px 29px, 43px 43px;
+        opacity: 0.18;
+        mix-blend-mode: overlay;
+      }
+
+      a { color: inherit; text-decoration: none; }
+
+      .site-nav {
+        position: absolute;
+        top: clamp(40px, 5vw, 64px);
+        right: clamp(40px, 5vw, 64px);
+        z-index: 3;
+        display: flex;
+        gap: clamp(26px, 3vw, 42px);
+        align-items: center;
+        font-size: clamp(12px, 1vw, 14px);
+        letter-spacing: 0.18em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .site-nav a { opacity: 0.66; transition: opacity 300ms ease; }
+      .site-nav a:hover, .site-nav a:focus-visible, .site-nav a[aria-current="page"] { opacity: 1; }
+
+      main {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        padding: clamp(40px, 5vw, 64px) clamp(22px, 6vw, 88px) clamp(70px, 9vw, 120px);
+      }
+
+      .wrap { width: min(100%, 1120px); margin: 0 auto; }
+
+      .topline {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 32px;
+        padding-top: clamp(92px, 15vh, 160px);
+        padding-bottom: clamp(70px, 10vh, 118px);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(42px, 9vw, 132px);
+        font-weight: 300;
+        letter-spacing: 0.03em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .home-link { display: inline-block; opacity: 0.96; transition: opacity 300ms ease; }
+      .home-link:hover, .home-link:focus-visible { opacity: 1; }
+
+      .filters {
+        display: flex;
+        flex: 0 0 auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: clamp(18px, 2.2vw, 34px);
+        margin-left: auto;
+        overflow-x: visible;
+        overflow-y: hidden;
+        padding-top: 0.22em;
+        color: var(--muted);
+        font-size: clamp(12px, 1vw, 14px);
+        letter-spacing: 0.18em;
+        line-height: 1;
+        scrollbar-width: none;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .filters::-webkit-scrollbar { display: none; }
+
+      .filter {
+        flex: 0 0 auto;
+        opacity: 0.66;
+        transition: opacity 300ms ease, color 300ms ease;
+      }
+
+      .filter:hover, .filter:focus-visible, .filter.is-active { color: var(--fg); opacity: 1; }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(38px, 5vw, 72px) clamp(22px, 3vw, 42px);
+      }
+
+      .project-card {
+        position: relative;
+        display: grid;
+        min-height: 0;
+        align-content: start;
+        gap: clamp(16px, 2vw, 24px);
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 520ms ease, transform 520ms ease, filter 520ms ease, color 300ms ease;
+      }
+
+      .project-card::before,
+      .project-card::after {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        content: "";
+        opacity: 0;
+        transition: opacity 760ms ease;
+      }
+
+      .project-card::before {
+        background:
+          radial-gradient(ellipse at 70% 26%, rgba(189, 226, 231, 0.2), transparent 34%),
+          radial-gradient(ellipse at 22% 78%, rgba(76, 126, 105, 0.14), transparent 44%),
+          linear-gradient(145deg, rgba(255, 255, 255, 0.018), rgba(0, 0, 0, 0.86) 72%),
+          var(--preview-image);
+        background-size: cover;
+        background-position: center;
+        filter: blur(18px) saturate(0.62);
+        transform: scale(1.1);
+      }
+
+      .project-card::after {
+        background:
+          repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 7px),
+          radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0 0.6px, transparent 1px),
+          radial-gradient(circle at 72% 58%, rgba(255, 255, 255, 0.06) 0 0.6px, transparent 1px);
+        background-size: auto, 29px 29px, 41px 41px;
+        filter: blur(0.6px);
+        mix-blend-mode: screen;
+        transform: translate3d(-1.5%, 0, 0);
+      }
+
+      .project-card[data-categories~="podcast"]::before {
+        background:
+          radial-gradient(ellipse at 76% 26%, rgba(120, 126, 86, 0.22), transparent 38%),
+          linear-gradient(90deg, rgba(120, 126, 86, 0.11), transparent 32%),
+          linear-gradient(145deg, rgba(255, 255, 255, 0.018), rgba(0, 0, 0, 0.9) 72%),
+          var(--preview-image);
+      }
+
+      .project-card[data-categories~="shorts"]::before {
+        background:
+          radial-gradient(ellipse at 58% 32%, rgba(160, 216, 231, 0.18), transparent 34%),
+          linear-gradient(90deg, transparent 0 40%, rgba(220, 238, 234, 0.08) 50%, transparent 60%),
+          linear-gradient(145deg, rgba(255, 255, 255, 0.018), rgba(0, 0, 0, 0.9) 72%),
+          var(--preview-image);
+      }
+
+      .project-card[data-categories~="project"]::before {
+        background:
+          radial-gradient(ellipse at 62% 54%, rgba(205, 225, 226, 0.14), transparent 30%),
+          radial-gradient(ellipse at 48% 50%, rgba(0, 0, 0, 0.8) 0 28%, transparent 48%),
+          linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.9) 76%),
+          var(--preview-image);
+      }
+
+      .project-card:hover, .project-card:focus-visible { color: #fff; }
+      .project-card:hover::before, .project-card:hover::after, .project-card:focus-visible::before, .project-card:focus-visible::after { opacity: 0.14; }
+      .project-card:hover::after, .project-card:focus-visible::after { animation: archivePreviewDrift 8s linear infinite; }
+
+      .project-thumb {
+        position: relative;
+        z-index: 1;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background:
+          radial-gradient(ellipse at 70% 20%, rgba(120, 126, 86, 0.18), transparent 46%),
+          linear-gradient(145deg, #050707, #010202 74%);
+      }
+
+      .project-thumb img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.52;
+        filter: saturate(0.68) contrast(0.92) brightness(0.72);
+        transform: scale(1.015);
+        transition: opacity 520ms ease, filter 520ms ease, transform 900ms ease;
+      }
+
+      .project-thumb::after {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        content: "";
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.38)),
+          radial-gradient(ellipse at 74% 18%, rgba(120, 126, 86, 0.14), transparent 48%);
+        mix-blend-mode: multiply;
+      }
+
+      .project-card:hover .project-thumb img,
+      .project-card:focus-visible .project-thumb img {
+        opacity: 0.74;
+        filter: saturate(0.8) contrast(0.96) brightness(0.84);
+        transform: scale(1.04);
+      }
+
+      .project-info {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: clamp(12px, 1.5vw, 18px);
+        min-width: 0;
+      }
+
+      .project-card.is-hidden {
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(10px);
+        filter: blur(4px);
+      }
+
+      .project-card.is-gone { display: none; }
+
+      .client-name {
+        max-width: 680px;
+        margin: 0;
+        overflow: hidden;
+        color: rgba(242, 244, 239, 0.9);
+        font-size: clamp(14px, 2.6vw, 38px);
+        font-weight: 300;
+        letter-spacing: 0.018em;
+        line-height: 0.98;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .client-name:lang(zh-Hant) {
+        font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", sans-serif;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+      }
+
+      .archive-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        color: var(--soft);
+        font-size: clamp(12px, 1vw, 14px);
+        letter-spacing: 0.12em;
+        line-height: 1.3;
+        text-transform: uppercase;
+      }
+
+      .category { color: rgba(242, 244, 239, 0.42); }
+      .client-name, .archive-meta { position: relative; z-index: 1; }
+
+      @keyframes archivePreviewDrift {
+        from { background-position: 0 0, 0 0, 0 0; transform: translate3d(-1.5%, 0, 0); }
+        to { background-position: 0 16px, 22px 8px, -18px 12px; transform: translate3d(1.5%, 0, 0); }
+      }
+
+      @media (max-width: 860px) {
+        .topline { display: grid; padding-top: 108px; padding-bottom: 58px; }
+        .filters { margin-left: 0; max-width: 100%; overflow-x: auto; justify-content: flex-start; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .project-card:hover::after, .project-card:focus-visible::after { animation: none; }
+      }
+
+      @media (max-width: 560px) {
+        .site-nav { top: 32px; right: 20px; gap: 20px; font-size: 12px; letter-spacing: 0.14em; }
+        main { padding-right: 20px; padding-left: 20px; }
+        .work-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">HOME</a>
+      <a href="work.html" aria-current="page">WORK</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+
+    <main>
+      <div class="wrap">
+        <div class="topline">
+          <h1><a class="home-link" href="index.html">SU STUDIO</a></h1>
+          <nav class="filters" aria-label="Work categories">
+            <a class="filter is-active" href="#" data-filter="all">ALL</a>
+            <a class="filter" href="#" data-filter="youtube">YOUTUBE</a>
+            <a class="filter" href="#" data-filter="shorts">SHORTS</a>
+            <a class="filter" href="#" data-filter="podcast">PODCAST</a>
+            <a class="filter" href="#" data-filter="project">PROJECT</a>
+          </nav>
+        </div>
+
+        <div class="work-grid" aria-live="polite">
+          <a class="project-card" href="archive-07.html" data-categories="youtube shorts" style="--preview-image: url('https://i.ytimg.com/vi/BzxXPR-bahk/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/BzxXPR-bahk/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">顧家醫療</h2>
+              <div class="archive-meta">
+                <span>2025-2026</span>
+                <span class="category">YOUTUBE / SHORTS</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-02.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/MFhjSCLxXUI/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/MFhjSCLxXUI/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">住展MyHousing TV</h2>
+              <div class="archive-meta">
+                <span>2025-2026</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-01.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/5FbrXOFnsZM/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/5FbrXOFnsZM/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">米愛拉☆海外致富趣</h2>
+              <div class="archive-meta">
+                <span>2026</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-03.html" data-categories="shorts" style="--preview-image: url('https://i.ytimg.com/vi/3QBzKEowhFg/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/3QBzKEowhFg/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name">DTP WOW</h2>
+              <div class="archive-meta">
+                <span>2025-2026</span>
+                <span class="category">SHORTS</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-18.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/dK0j-e1j-pc/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/dK0j-e1j-pc/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">雨漏熱 專業工程指定防水品牌</h2>
+              <div class="archive-meta">
+                <span>2024-2026</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-05.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/B7TW6zG0Zq8/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/B7TW6zG0Zq8/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">營養健身葛格Peeta</h2>
+              <div class="archive-meta">
+                <span>2025</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-13.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/0LzLVB-tND8/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/0LzLVB-tND8/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">夏恩英語</h2>
+              <div class="archive-meta">
+                <span>2024-2025</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-04.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/tHw_SUxSrL0/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/tHw_SUxSrL0/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">高雄市原生藝術育成中心</h2>
+              <div class="archive-meta">
+                <span>2025</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-08.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/Ms0YOwopr2k/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/Ms0YOwopr2k/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">鳥先生&amp;鳥夫人</h2>
+              <div class="archive-meta">
+                <span>2024-2025</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-15.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/hXvnsNm7oJo/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/hXvnsNm7oJo/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">惠誠代書</h2>
+              <div class="archive-meta">
+                <span>2023-2025</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-09.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/bYiF2jzph30/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/bYiF2jzph30/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">找蔬食 Traveggo</h2>
+              <div class="archive-meta">
+                <span>2025</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-10.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/T7SwFKgY5hM/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/T7SwFKgY5hM/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">營養師品瑄</h2>
+              <div class="archive-meta">
+                <span>2024-2025</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-06.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/tW7ciqZngJw/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/tW7ciqZngJw/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">「在一起」家人聯展</h2>
+              <div class="archive-meta">
+                <span>2025</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-14.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/4YT4kFZ_hyg/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/4YT4kFZ_hyg/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">初日醫學 - 宋晏仁醫師 x Cofit</h2>
+              <div class="archive-meta">
+                <span>2023-2025</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-12.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/bga_zHJMiWc/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/bga_zHJMiWc/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">N楚立功</h2>
+              <div class="archive-meta">
+                <span>2024-2025</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-11.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/1IBKVYkYBJU/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/1IBKVYkYBJU/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">2024清水眷村-進駐計畫成果紀錄</h2>
+              <div class="archive-meta">
+                <span>2024</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-17.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/rPqky60JGMo/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/rPqky60JGMo/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">尹子潔個展－我想再煎荷包蛋</h2>
+              <div class="archive-meta">
+                <span>2024</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-16.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/UHvsgzmZayE/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/UHvsgzmZayE/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">天主教左營聖女小德蘭堂</h2>
+              <div class="archive-meta">
+                <span>2024</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-19.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/ThuYfYT1KAQ/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/ThuYfYT1KAQ/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">三個麻瓜</h2>
+              <div class="archive-meta">
+                <span>2023-2024</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-20.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/8DuBhfIJlj0/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/8DuBhfIJlj0/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">2023臺中市松柏國民美展</h2>
+              <div class="archive-meta">
+                <span>2023</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-21.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/W-0HRQEEgw0/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/W-0HRQEEgw0/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">MADAMUA 化妝品形象廣告</h2>
+              <div class="archive-meta">
+                <span>2023</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-24.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/FAOvZQJ_jtI/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/FAOvZQJ_jtI/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">台灣達人秀/REDOU</h2>
+              <div class="archive-meta">
+                <span>2023</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-23.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/JmSdlwB9jrc/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/JmSdlwB9jrc/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">臺灣尋奇 \ 露西個人頻道</h2>
+              <div class="archive-meta">
+                <span>2023</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-22.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/Hu7_jUUI624/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/Hu7_jUUI624/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">挑嘴男</h2>
+              <div class="archive-meta">
+                <span>2023</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-26.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/odl6kn-hG-o/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/odl6kn-hG-o/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">2023臺灣美術新貌獎</h2>
+              <div class="archive-meta">
+                <span>2023</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-27.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/WrRuCAnTZ4Q/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/WrRuCAnTZ4Q/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">莊頭北長知識-幕後花絮</h2>
+              <div class="archive-meta">
+                <span>2023</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-28.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/AiMFbK5liQw/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/AiMFbK5liQw/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">初秋蹤影 花藝示範表演</h2>
+              <div class="archive-meta">
+                <span>2022</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-25.html" data-categories="youtube" style="--preview-image: url('https://i.ytimg.com/vi/dQ4tfvxRd_8/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/dQ4tfvxRd_8/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">大師來占台之麻將神算</h2>
+              <div class="archive-meta">
+                <span>2022</span>
+                <span class="category">YOUTUBE</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-29.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/Nvk5kQFPUp4/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/Nvk5kQFPUp4/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">2022臺灣美術新貌獎</h2>
+              <div class="archive-meta">
+                <span>2022</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-31.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/5mwVHzpwYPw/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/5mwVHzpwYPw/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">臺灣美術新貌20週年</h2>
+              <div class="archive-meta">
+                <span>2022</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-30.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/mYZ2WmA6isc/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/mYZ2WmA6isc/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">2022 南屯，美好生活</h2>
+              <div class="archive-meta">
+                <span>2022</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-32.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/XJGvi6DHcN8/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/XJGvi6DHcN8/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">論壇活動紀錄花絮</h2>
+              <div class="archive-meta">
+                <span>2022</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-33.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/T1ZPV43dELQ/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/T1ZPV43dELQ/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">2021清風茶宴-雲端喫趣茶</h2>
+              <div class="archive-meta">
+                <span>2022</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card" href="archive-34.html" data-categories="project" style="--preview-image: url('https://i.ytimg.com/vi/1taP022sP7o/hqdefault.jpg')">
+            <div class="project-thumb"><img src="https://i.ytimg.com/vi/1taP022sP7o/hqdefault.jpg" alt="" loading="lazy" /></div>
+            <div class="project-info">
+              <h2 class="client-name" lang="zh-Hant">2021臺灣美術新貌獎</h2>
+              <div class="archive-meta">
+                <span>2021</span>
+                <span class="category">PROJECT</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const filters = document.querySelectorAll("[data-filter]");
+      const cards = document.querySelectorAll("[data-categories]");
+      const storageKey = "suStudioWorkState";
+
+      const rememberState = (category) => {
+        sessionStorage.setItem(
+          storageKey,
+          JSON.stringify({
+            category,
+            scrollY: window.scrollY,
+          })
+        );
+      };
+
+      const applyFilter = (category, shouldRemember = true) => {
+        filters.forEach((item) => {
+          item.classList.toggle("is-active", item.dataset.filter === category);
+        });
+
+        cards.forEach((card) => {
+          const categories = (card.dataset.categories || "").split(/\s+/);
+          const shouldShow = category === "all" || categories.includes(category);
+
+          if (shouldShow) {
+            card.classList.remove("is-gone");
+            window.requestAnimationFrame(() => card.classList.remove("is-hidden"));
+          } else {
+            card.classList.add("is-hidden");
+            window.setTimeout(() => {
+              if (card.classList.contains("is-hidden")) card.classList.add("is-gone");
+            }, 520);
+          }
+        });
+
+        if (shouldRemember) rememberState(category);
+      };
+
+      filters.forEach((filter) => {
+        filter.addEventListener("click", (event) => {
+          event.preventDefault();
+          applyFilter(filter.dataset.filter);
+        });
+      });
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const activeFilter = document.querySelector(".filter.is-active");
+          rememberState(activeFilter ? activeFilter.dataset.filter : "all");
+        });
+      });
+
+      const savedState = JSON.parse(sessionStorage.getItem(storageKey) || "null");
+      if (savedState && savedState.category) {
+        applyFilter(savedState.category, false);
+        window.requestAnimationFrame(() => {
+          window.scrollTo(0, savedState.scrollY || 0);
+        });
+      }
+    </script>
+  </body>
+</html>

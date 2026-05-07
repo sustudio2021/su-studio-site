@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DTP WOW - SU STUDIO</title>
+    <link rel="stylesheet" href="archive-style.css" />
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">HOME</a>
+      <a href="work.html" aria-current="page">WORK</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <main>
+      <div class="wrap">
+        <header class="archive-head">
+          <a class="back" href="work.html" data-back-to-work>Back to Work</a>
+          <h1>DTP WOW</h1>
+          <div class="archive-meta">
+            <span>2025-2026</span>
+            <span>SHORTS</span>
+            <span>Vertical and short-form content</span>
+          </div>
+        </header>
+        <section class="archive-section" aria-label="DTP WOW SHORTS archive">
+          <h2 class="section-label">SHORTS</h2>
+          <div class="video-grid is-shorts">
+            <article class="video-card">
+              <button class="video-frame" type="button" data-embed="https://www.youtube.com/embed/3QBzKEowhFg" data-title="2026 全新松鶴越野 #越野跑 #松鶴越野" aria-label="Play 2026 全新松鶴越野 #越野跑 #松鶴越野">
+                <img src="https://i.ytimg.com/vi/3QBzKEowhFg/hqdefault.jpg" alt="2026 全新松鶴越野 #越野跑 #松鶴越野" loading="lazy" />
+              </button>
+              <div class="video-meta"><span class="video-title">2026 全新松鶴越野 #越野跑 #松鶴越野</span><span class="year">2026</span></div>
+            </article>
+            <article class="video-card">
+              <button class="video-frame" type="button" data-embed="https://www.youtube.com/embed/2nPyhp1PU10" data-title="DTP WOW系列賽事的選擇 #越野跑 #鳴鳳越野 #松鶴越野 #五峰越野 #親子共樂 #戶外教育 #越野跑 #綠色賽事 #環保永續#越野入門 #親子越野" aria-label="Play DTP WOW系列賽事的選擇 #越野跑 #鳴鳳越野 #松鶴越野 #五峰越野 #親子共樂 #戶外教育 #越野跑 #綠色賽事 #環保永續#越野入門 #親子越野">
+                <img src="https://i.ytimg.com/vi/2nPyhp1PU10/hqdefault.jpg" alt="DTP WOW系列賽事的選擇 #越野跑 #鳴鳳越野 #松鶴越野 #五峰越野 #親子共樂 #戶外教育 #越野跑 #綠色賽事 #環保永續#越野入門 #親子越野" loading="lazy" />
+              </button>
+              <div class="video-meta"><span class="video-title">DTP WOW系列賽事的選擇 #越野跑 #鳴鳳越野 #松鶴越野 #五峰越野 #親子共樂 #戶外教育 #越野跑 #綠色賽事 #環保永續#越野入門 #親子越野</span><span class="year">2025</span></div>
+            </article>
+            <article class="video-card">
+              <button class="video-frame" type="button" data-embed="https://www.youtube.com/embed/TxBoqUOe8fk" data-title="2026 鳴鳳越野 走進山裡，也走進自己  #鳴鳳越野 #DTPWOW #越野跑 #綠色賽事 #環保永續#親子共樂 #戶外教育 #鳴鳳古道 #苗栗獅潭#越野入門 #親子越野 #dtpwow" aria-label="Play 2026 鳴鳳越野 走進山裡，也走進自己  #鳴鳳越野 #DTPWOW #越野跑 #綠色賽事 #環保永續#親子共樂 #戶外教育 #鳴鳳古道 #苗栗獅潭#越野入門 #親子越野 #dtpwow">
+                <img src="https://i.ytimg.com/vi/TxBoqUOe8fk/hqdefault.jpg" alt="2026 鳴鳳越野 走進山裡，也走進自己  #鳴鳳越野 #DTPWOW #越野跑 #綠色賽事 #環保永續#親子共樂 #戶外教育 #鳴鳳古道 #苗栗獅潭#越野入門 #親子越野 #dtpwow" loading="lazy" />
+              </button>
+              <div class="video-meta"><span class="video-title">2026 鳴鳳越野 走進山裡，也走進自己  #鳴鳳越野 #DTPWOW #越野跑 #綠色賽事 #環保永續#親子共樂 #戶外教育 #鳴鳳古道 #苗栗獅潭#越野入門 #親子越野 #dtpwow</span><span class="year">2025</span></div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script>
+      const backToWork = document.querySelector('[data-back-to-work]');
+      if (backToWork) {
+        backToWork.addEventListener('click', (event) => {
+          const cameFromWork = document.referrer && document.referrer.includes('work.html');
+          if (!cameFromWork) return;
+
+          event.preventDefault();
+          history.back();
+        });
+      }
+
+      document.querySelectorAll('.video-frame').forEach((frame) => {
+        frame.addEventListener('click', () => {
+          const embed = frame.dataset.embed;
+          const title = frame.dataset.title || 'SU STUDIO video';
+          if (!embed || frame.classList.contains('is-playing')) return;
+
+          const iframe = document.createElement('iframe');
+          iframe.src = embed + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+          iframe.title = title;
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+
+          frame.classList.add('is-playing');
+          frame.replaceChildren(iframe);
+        });
+      });
+    </script>
+  </body>
+</html>

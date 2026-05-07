@@ -1,0 +1,10 @@
+{
+  "name": "su-studio-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/verify-site.mjs",
+    "check": "node scripts/verify-site.mjs"
+  }
+}

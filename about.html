@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About - SU STUDIO</title>
+    <meta name="description" content="About SU STUDIO." />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #010203;
+        --fg: #f2f4ef;
+        --muted: rgba(242, 244, 239, 0.54);
+        --soft: rgba(242, 244, 239, 0.72);
+        --font-en: Inter, Helvetica, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--bg);
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(ellipse at 72% 14%, rgba(28, 78, 102, 0.2), transparent 34rem),
+          radial-gradient(ellipse at 18% 70%, rgba(120, 126, 86, 0.12), transparent 40rem),
+          linear-gradient(180deg, #010203 0%, #030405 54%, #010101 100%);
+        color: var(--fg);
+        font-family: var(--font-en);
+        font-weight: 400;
+        letter-spacing: 0.012em;
+      }
+
+      body::before {
+        position: fixed;
+        inset: -18%;
+        z-index: -2;
+        content: "";
+        background:
+          radial-gradient(ellipse at 74% 18%, transparent 0 30%, rgba(132, 213, 235, 0.12) 48%, transparent 74%),
+          radial-gradient(ellipse at 22% 78%, transparent 0 34%, rgba(120, 126, 86, 0.12) 52%, transparent 74%);
+        filter: blur(54px);
+        opacity: 0.78;
+      }
+
+      body::after {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        background-image:
+          repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.024) 0 1px, transparent 1px 5px),
+          radial-gradient(circle at 18% 34%, rgba(255, 255, 255, 0.1) 0 0.55px, transparent 1px);
+        background-size: auto, 31px 31px;
+        opacity: 0.18;
+        mix-blend-mode: overlay;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: clamp(40px, 5vw, 64px);
+        right: clamp(40px, 5vw, 64px);
+        z-index: 3;
+        display: flex;
+        gap: clamp(26px, 3vw, 42px);
+        align-items: center;
+        font-size: clamp(12px, 1vw, 14px);
+        letter-spacing: 0.18em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .site-nav a {
+        opacity: 0.66;
+        transition: opacity 300ms ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus-visible,
+      .site-nav a[aria-current="page"] {
+        opacity: 1;
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        overflow: hidden;
+        padding: clamp(40px, 5vw, 64px) clamp(22px, 6vw, 88px) clamp(74px, 9vw, 120px);
+      }
+
+      .background-logo {
+        position: absolute;
+        top: clamp(72px, 9vh, 130px);
+        right: -24vw;
+        z-index: -1;
+        width: min(92vw, 1120px);
+        height: auto;
+        pointer-events: none;
+        filter: blur(8px);
+        mix-blend-mode: screen;
+        opacity: 0.22;
+        transform: rotate(-10deg);
+        animation: backgroundLogoDrift 18s ease-in-out infinite alternate;
+      }
+
+      @keyframes backgroundLogoDrift {
+        from {
+          opacity: 0.18;
+          transform: translate3d(-1.4%, 1.2%, 0) rotate(-11deg) scale(0.99);
+        }
+
+        to {
+          opacity: 0.26;
+          transform: translate3d(1.2%, -1%, 0) rotate(-8deg) scale(1.03);
+        }
+      }
+
+      .wrap {
+        width: min(100%, 1120px);
+        margin: 0 auto;
+      }
+
+      .about-header {
+        display: grid;
+        gap: clamp(34px, 7vh, 76px);
+        padding-top: clamp(120px, 18vh, 190px);
+        padding-bottom: clamp(80px, 12vh, 140px);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(56px, 12vw, 170px);
+        font-weight: 300;
+        letter-spacing: 0.03em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .studio-meta,
+      .contact-hint {
+        color: var(--muted);
+        font-size: clamp(12px, 1vw, 14px);
+        letter-spacing: 0.16em;
+        line-height: 1.8;
+        text-transform: uppercase;
+      }
+
+      .studio-meta {
+        display: grid;
+        gap: 4px;
+      }
+
+      .studio-logo {
+        display: block;
+        width: clamp(72px, 8vw, 112px);
+        height: auto;
+        opacity: 0.68;
+        mix-blend-mode: screen;
+      }
+
+      .statement {
+        max-width: 620px;
+        padding-bottom: clamp(130px, 22vh, 240px);
+      }
+
+      .statement p {
+        margin: 0;
+      }
+
+      .statement-text {
+        display: grid;
+      }
+
+      .statement-text span {
+        grid-area: 1 / 1;
+        color: var(--soft);
+        font-size: clamp(22px, 3.2vw, 42px);
+        font-weight: 300;
+        letter-spacing: 0.012em;
+        line-height: 1.28;
+        transition: opacity 800ms ease;
+      }
+
+      .statement-text [lang="zh-Hant"] {
+        max-width: 420px;
+        color: rgba(242, 244, 239, 0.62);
+        font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", sans-serif;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        line-height: 1.56;
+        opacity: 0;
+      }
+
+      .statement:hover [lang="en"],
+      .statement:focus-within [lang="en"] {
+        opacity: 0;
+      }
+
+      .statement:hover [lang="zh-Hant"],
+      .statement:focus-within [lang="zh-Hant"] {
+        opacity: 1;
+      }
+
+      .contact-hint {
+        display: grid;
+        gap: 6px;
+        padding-bottom: clamp(20px, 5vh, 70px);
+      }
+
+      .contact-hint a {
+        color: rgba(242, 244, 239, 0.72);
+      }
+
+      @media (max-width: 760px) {
+        .site-nav {
+          top: 32px;
+          right: 20px;
+          gap: 20px;
+          font-size: 12px;
+          letter-spacing: 0.14em;
+        }
+
+        main {
+          padding-right: 20px;
+          padding-left: 20px;
+        }
+
+        .about-header {
+          padding-top: 112px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .background-logo {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">HOME</a>
+      <a href="work.html">WORK</a>
+      <a href="about.html" aria-current="page">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+
+    <main>
+      <img class="background-logo" src="su-logo.png" alt="" aria-hidden="true" />
+      <div class="wrap">
+        <header class="about-header">
+          <h1>ABOUT</h1>
+          <img class="studio-logo" src="su-logo.png" alt="SU STUDIO" />
+          <div class="studio-meta" aria-label="Studio information">
+            <span>SU STUDIO</span>
+            <span>Founded 2021</span>
+            <span>Based in Taiwan</span>
+          </div>
+        </header>
+
+        <section class="statement" aria-label="Studio statement">
+          <p class="statement-text" tabindex="0">
+            <span lang="en">
+              We are interested in<br />
+              how images shape memory,<br />
+              how sound changes distance,<br />
+              and how structure influences the way people see.
+            </span>
+            <span lang="zh-Hant">
+              我們關注觀看如何被建立<br />
+              聲音如何改變距離<br />
+              以及結構如何影響理解
+            </span>
+          </p>
+        </section>
+
+        <section class="contact-hint" aria-label="Contact">
+          <span>For inquiries:</span>
+          <a href="mailto:susustudio2021@gmail.com">susustudio2021@gmail.com</a>
+          <a href="https://lin.ee/uOrsZ8O">LINE</a>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

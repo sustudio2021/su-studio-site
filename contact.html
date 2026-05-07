@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact - SU STUDIO</title>
+    <meta name="description" content="Contact SU STUDIO." />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #010203;
+        --fg: #f2f4ef;
+        --muted: rgba(242, 244, 239, 0.58);
+        --soft: rgba(242, 244, 239, 0.76);
+        --font-en: Inter, Helvetica, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--bg);
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(ellipse at 76% 18%, rgba(28, 78, 102, 0.2), transparent 34rem),
+          radial-gradient(ellipse at 18% 78%, rgba(120, 126, 86, 0.12), transparent 40rem),
+          linear-gradient(180deg, #010203 0%, #030405 54%, #010101 100%);
+        color: var(--fg);
+        font-family: var(--font-en);
+        font-weight: 400;
+        letter-spacing: 0.012em;
+      }
+
+      body::before {
+        position: fixed;
+        inset: -18%;
+        z-index: -2;
+        content: "";
+        background:
+          radial-gradient(ellipse at 74% 20%, transparent 0 30%, rgba(132, 213, 235, 0.12) 48%, transparent 74%),
+          radial-gradient(ellipse at 22% 80%, transparent 0 34%, rgba(120, 126, 86, 0.12) 52%, transparent 74%);
+        filter: blur(54px);
+        opacity: 0.78;
+      }
+
+      body::after {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        background-image:
+          repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.024) 0 1px, transparent 1px 5px),
+          radial-gradient(circle at 18% 34%, rgba(255, 255, 255, 0.1) 0 0.55px, transparent 1px);
+        background-size: auto, 31px 31px;
+        opacity: 0.18;
+        mix-blend-mode: overlay;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: clamp(40px, 5vw, 64px);
+        right: clamp(40px, 5vw, 64px);
+        z-index: 3;
+        display: flex;
+        gap: clamp(26px, 3vw, 42px);
+        align-items: center;
+        font-size: clamp(12px, 1vw, 14px);
+        letter-spacing: 0.18em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .site-nav a {
+        opacity: 0.66;
+        transition: opacity 300ms ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus-visible,
+      .site-nav a[aria-current="page"] {
+        opacity: 1;
+      }
+
+      main {
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+        padding: clamp(40px, 5vw, 64px) clamp(22px, 6vw, 88px);
+      }
+
+      main::before {
+        position: absolute;
+        right: -16vw;
+        bottom: -20vh;
+        z-index: -1;
+        width: min(84vw, 980px);
+        height: min(70vw, 820px);
+        pointer-events: none;
+        content: "";
+        background:
+          radial-gradient(ellipse at 58% 42%, rgba(176, 216, 226, 0.12), transparent 32%),
+          radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.82) 0 34%, transparent 52%),
+          radial-gradient(ellipse at 50% 50%, transparent 0 42%, rgba(146, 190, 206, 0.12) 52%, transparent 70%);
+        filter: blur(26px);
+        opacity: 0.62;
+        transform: rotate(-12deg);
+      }
+
+      .wrap {
+        width: min(100%, 1120px);
+        min-height: calc(100vh - clamp(80px, 10vw, 128px));
+        margin: 0 auto;
+        display: grid;
+        align-items: end;
+      }
+
+      .contact-block {
+        width: min(100%, 520px);
+        padding-bottom: clamp(68px, 12vh, 130px);
+        margin-left: clamp(0px, 6vw, 90px);
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        color: rgba(242, 244, 239, 0.92);
+        font-size: clamp(24px, 3.2vw, 46px);
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .sentence {
+        display: grid;
+        margin-top: clamp(42px, 7vh, 76px);
+        font-size: clamp(18px, 2vw, 28px);
+        font-weight: 300;
+        line-height: 1.45;
+      }
+
+      .sentence span {
+        grid-area: 1 / 1;
+        color: var(--soft);
+        letter-spacing: 0.018em;
+        transition: opacity 800ms ease;
+      }
+
+      .sentence [lang="zh-Hant"] {
+        color: rgba(242, 244, 239, 0.64);
+        font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", sans-serif;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        opacity: 0;
+      }
+
+      .sentence:hover [lang="en"],
+      .sentence:focus-within [lang="en"] {
+        opacity: 0;
+      }
+
+      .sentence:hover [lang="zh-Hant"],
+      .sentence:focus-within [lang="zh-Hant"] {
+        opacity: 1;
+      }
+
+      .contact-links {
+        display: grid;
+        gap: clamp(14px, 2.2vh, 22px);
+        margin-top: clamp(54px, 9vh, 96px);
+        color: var(--muted);
+        font-size: clamp(13px, 1.1vw, 15px);
+        letter-spacing: 0.12em;
+        line-height: 1.5;
+      }
+
+      .social {
+        display: flex;
+        gap: clamp(24px, 4vw, 52px);
+        margin-top: clamp(12px, 2vh, 22px);
+      }
+
+      .contact-links a {
+        opacity: 0.72;
+        transition: opacity 300ms ease;
+      }
+
+      .contact-links a:hover,
+      .contact-links a:focus-visible {
+        opacity: 1;
+        text-decoration: underline;
+        text-underline-offset: 0.28em;
+        text-decoration-thickness: 1px;
+      }
+
+      @media (max-width: 760px) {
+        .site-nav {
+          top: 32px;
+          right: 20px;
+          gap: 20px;
+          font-size: 12px;
+          letter-spacing: 0.14em;
+        }
+
+        main {
+          padding-right: 20px;
+          padding-left: 20px;
+        }
+
+        .contact-block {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html">HOME</a>
+      <a href="work.html">WORK</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html" aria-current="page">CONTACT</a>
+    </nav>
+
+    <main>
+      <div class="wrap">
+        <section class="contact-block" aria-label="Contact">
+          <h1>CONTACT</h1>
+          <p class="sentence" tabindex="0">
+            <span lang="en">Let’s build new ways of seeing.</span>
+            <span lang="zh-Hant">關於新的觀看方式</span>
+          </p>
+          <div class="contact-links">
+            <a href="mailto:susustudio2021@gmail.com">susustudio2021@gmail.com</a>
+            <div class="social">
+              <a href="https://lin.ee/uOrsZ8O" aria-label="Official LINE">LINE</a>
+              <a href="#" aria-label="Instagram">Instagram</a>
+              <a href="#" aria-label="Threads">Threads</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
