@@ -252,6 +252,21 @@
         .about-header {
           padding-top: 112px;
         }
+
+        .statement {
+          max-width: calc(100vw - 40px);
+        }
+
+        .statement-text [lang="en"] {
+          font-size: clamp(12px, 3.9vw, 22px);
+          letter-spacing: 0.006em;
+          line-height: 1.42;
+          white-space: nowrap;
+        }
+
+        .statement-text [lang="zh-Hant"] {
+          font-size: clamp(12px, 3.9vw, 22px);
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
