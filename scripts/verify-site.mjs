@@ -6,6 +6,8 @@ const htmlFiles = readdirSync(root).filter((file) => extname(file) === ".html");
 const localTargets = new Set([
   ...htmlFiles,
   "archive-style.css",
+  "og-cover.jpg",
+  "public/og-cover.jpg",
   "su-logo.png",
 ]);
 
