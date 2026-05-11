@@ -24,6 +24,7 @@ for (const file of htmlFiles) {
       value.startsWith("http://") ||
       value.startsWith("https://") ||
       value.startsWith("mailto:") ||
+      value.startsWith("tel:") ||
       value.startsWith("#")
     ) {
       continue;
