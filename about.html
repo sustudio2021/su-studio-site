@@ -195,17 +195,17 @@
         display: grid;
       }
 
-      .statement-text span {
+      .statement-language {
         grid-area: 1 / 1;
         color: var(--soft);
-        font-size: clamp(22px, 3.2vw, 42px);
+        font-size: clamp(16px, 3.2vw, 42px);
         font-weight: 300;
         letter-spacing: 0.012em;
-        line-height: 1.28;
+        line-height: 1.45;
         transition: opacity 800ms ease;
       }
 
-      .statement-text [lang="zh-Hant"] {
+      .statement-language[lang="zh-Hant"] {
         max-width: 420px;
         color: rgba(242, 244, 239, 0.62);
         font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", sans-serif;
@@ -213,6 +213,11 @@
         letter-spacing: 0.04em;
         line-height: 1.56;
         opacity: 0;
+      }
+
+      .statement-line {
+        display: block;
+        white-space: nowrap;
       }
 
       .statement:hover [lang="en"],
@@ -257,15 +262,16 @@
           max-width: calc(100vw - 40px);
         }
 
-        .statement-text [lang="en"] {
-          font-size: clamp(12px, 3.9vw, 22px);
+        .statement-language {
+          font-size: clamp(11px, 3.55vw, 22px);
           letter-spacing: 0.006em;
           line-height: 1.42;
-          white-space: nowrap;
         }
 
-        .statement-text [lang="zh-Hant"] {
-          font-size: clamp(12px, 3.9vw, 22px);
+        .statement-language[lang="zh-Hant"] {
+          font-size: clamp(11px, 3.55vw, 22px);
+          letter-spacing: 0.04em;
+          line-height: 1.55;
         }
       }
 
@@ -299,16 +305,16 @@
 
         <section class="statement" aria-label="Studio statement">
           <p class="statement-text" tabindex="0">
-            <span lang="en">
-              We are interested in<br />
-              how images shape memory,<br />
-              how sound changes distance,<br />
-              and how structure influences the way people see.
+            <span class="statement-language" lang="en">
+              <span class="statement-line">We are interested in</span>
+              <span class="statement-line">how images shape memory,</span>
+              <span class="statement-line">how sound changes distance,</span>
+              <span class="statement-line">and how structure influences the way people see.</span>
             </span>
-            <span lang="zh-Hant">
-              我們關注觀看如何被建立<br />
-              聲音如何改變距離<br />
-              以及結構如何影響理解
+            <span class="statement-language" lang="zh-Hant">
+              <span class="statement-line">我們關注觀看如何被建立</span>
+              <span class="statement-line">聲音如何改變距離</span>
+              <span class="statement-line">以及結構如何影響理解</span>
             </span>
           </p>
         </section>
