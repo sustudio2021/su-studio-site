@@ -10,6 +10,8 @@ const localTargets = new Set([
   "public/og-cover.jpg",
   "public/robots.txt",
   "public/sitemap.xml",
+  "robots.txt",
+  "sitemap.xml",
   "su-logo.png",
 ]);
 

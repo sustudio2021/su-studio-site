@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sustudio2021.com/sitemap.xml
