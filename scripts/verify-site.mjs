@@ -8,6 +8,8 @@ const localTargets = new Set([
   "archive-style.css",
   "og-cover.jpg",
   "public/og-cover.jpg",
+  "public/robots.txt",
+  "public/sitemap.xml",
   "su-logo.png",
 ]);
 
