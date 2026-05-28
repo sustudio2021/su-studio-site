@@ -6,5 +6,8 @@
   "scripts": {
     "build": "node scripts/sync-public-root.mjs && node scripts/verify-site.mjs",
     "check": "node scripts/verify-site.mjs"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
   }
 }

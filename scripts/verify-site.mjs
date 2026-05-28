@@ -29,6 +29,7 @@ for (const file of htmlFiles) {
       value.startsWith("https://") ||
       value.startsWith("mailto:") ||
       value.startsWith("tel:") ||
+      value.startsWith("/_vercel/") ||
       value.startsWith("#")
     ) {
       continue;
