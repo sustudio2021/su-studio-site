@@ -3,16 +3,6 @@
   "buildCommand": "npm run build",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/public/sitemap.xml"
-    },
-    {
-      "source": "/robots.txt",
-      "destination": "/public/robots.txt"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
