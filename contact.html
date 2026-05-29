@@ -311,8 +311,60 @@
         gap: 8px;
       }
 
+      .budget-control {
+        display: grid;
+        gap: 10px;
+      }
+
+      .budget-value {
+        color: rgba(242, 244, 239, 0.72);
+        font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        line-height: 1.3;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        height: 22px;
+        margin: 0;
+        accent-color: rgba(242, 244, 239, 0.82);
+        background: transparent;
+        cursor: pointer;
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.24);
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        width: 15px;
+        height: 15px;
+        margin-top: -7px;
+        border: 1px solid rgba(242, 244, 239, 0.72);
+        border-radius: 50%;
+        background: rgba(242, 244, 239, 0.82);
+        appearance: none;
+      }
+
+      input[type="range"]::-moz-range-track {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.24);
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        border: 1px solid rgba(242, 244, 239, 0.72);
+        border-radius: 50%;
+        background: rgba(242, 244, 239, 0.82);
+      }
+
       .service-pill,
-      .length-option {
+      .length-option,
+      .budget-option {
         position: relative;
         display: inline-flex;
         align-items: center;
@@ -331,7 +383,8 @@
       }
 
       .service-pill input,
-      .length-option input {
+      .length-option input,
+      .budget-option input {
         position: absolute;
         inset: 0;
         opacity: 0;
@@ -339,13 +392,15 @@
       }
 
       .service-pill:hover,
-      .length-option:hover {
+      .length-option:hover,
+      .budget-option:hover {
         border-color: rgba(255, 255, 255, 0.22);
         color: rgba(242, 244, 239, 0.82);
       }
 
       .service-pill:has(input:checked),
-      .length-option:has(input:checked) {
+      .length-option:has(input:checked),
+      .budget-option:has(input:checked) {
         border-color: rgba(242, 244, 239, 0.72);
         background: rgba(242, 244, 239, 0.82);
         box-shadow: 0 0 34px rgba(120, 126, 86, 0.18);
@@ -354,6 +409,8 @@
 
       .service-pill:has(input:focus-visible),
       .length-option:has(input:focus-visible),
+      .budget-option:has(input:focus-visible),
+      input[type="range"]:focus-visible,
       input:focus-visible,
       textarea:focus-visible,
       button:focus-visible {
@@ -590,6 +647,18 @@
               </div>
             </fieldset>
 
+            <fieldset class="form-field">
+              <legend>預算範圍</legend>
+              <div class="budget-control">
+                <span class="budget-value" id="budgetValue">NT$ 50,000</span>
+                <input type="range" id="budgetRange" min="1000" max="100000" step="1000" value="50000" aria-describedby="budgetValue" />
+                <input type="hidden" name="Budget range" id="budgetRangeValue" value="NT$ 50,000" />
+              </div>
+              <div class="segment-group">
+                <label class="budget-option"><input type="checkbox" id="budgetUndecided" name="Budget range" value="尚未確定" />尚未確定</label>
+              </div>
+            </fieldset>
+
             <div class="form-row">
               <label class="form-field">
                 <span class="field-label">姓名 / 稱呼</span>
@@ -626,6 +695,21 @@
       const inquiryStatus = document.querySelector("#inquiryStatus");
       const submitButton = inquiryForm.querySelector("button[type='submit']");
       const serviceInputs = inquiryForm.querySelectorAll('input[name="Services needed"]');
+      const budgetRange = document.querySelector("#budgetRange");
+      const budgetValue = document.querySelector("#budgetValue");
+      const budgetRangeValue = document.querySelector("#budgetRangeValue");
+      const budgetUndecided = document.querySelector("#budgetUndecided");
+
+      function formatBudget(value) {
+        const amount = Number(value).toLocaleString("en-US");
+        return Number(value) >= 100000 ? "NT$ 100,000+" : `NT$ ${amount}`;
+      }
+
+      function updateBudgetValue() {
+        const formattedBudget = formatBudget(budgetRange.value);
+        budgetValue.textContent = formattedBudget;
+        budgetRangeValue.value = formattedBudget;
+      }
 
       function setInquiryStatus(message, type) {
         inquiryStatus.textContent = message;
@@ -663,6 +747,9 @@
           if (!response.ok) throw new Error("Formspree request failed");
 
           inquiryForm.reset();
+          budgetRange.disabled = false;
+          budgetRangeValue.disabled = false;
+          updateBudgetValue();
           setInquiryStatus("已收到您的需求，我們將盡快與您聯繫。", "success");
         } catch (error) {
           setInquiryStatus("送出失敗，請稍後再試或直接來信 sustudio2021@gmail.com", "error");
@@ -670,6 +757,19 @@
           submitButton.disabled = false;
         }
       });
+
+      budgetRange.addEventListener("input", () => {
+        if (budgetUndecided.checked) budgetUndecided.checked = false;
+        updateBudgetValue();
+      });
+
+      budgetUndecided.addEventListener("change", () => {
+        budgetRange.disabled = budgetUndecided.checked;
+        budgetRangeValue.disabled = budgetUndecided.checked;
+        budgetValue.textContent = budgetUndecided.checked ? "尚未確定" : formatBudget(budgetRange.value);
+      });
+
+      updateBudgetValue();
     </script>
   </body>
 </html>
