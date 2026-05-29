@@ -52,9 +52,10 @@
         margin: 0;
         overflow-x: hidden;
         background:
-          radial-gradient(ellipse at 78% 10%, rgba(25, 77, 103, 0.22), transparent 34rem),
-          radial-gradient(ellipse at 16% 44%, rgba(5, 34, 34, 0.16), transparent 38rem),
-          radial-gradient(ellipse at 64% 62%, rgba(17, 71, 84, 0.16), transparent 44rem),
+          radial-gradient(ellipse at 78% 10%, rgba(25, 77, 103, 0.19), transparent 34rem),
+          radial-gradient(ellipse at 16% 44%, rgba(5, 34, 34, 0.14), transparent 38rem),
+          radial-gradient(ellipse at 64% 62%, rgba(120, 126, 86, 0.08), transparent 42rem),
+          radial-gradient(ellipse at 70% 78%, rgba(17, 71, 84, 0.11), transparent 46rem),
           linear-gradient(180deg, #010203 0%, #030405 48%, #010101 100%);
         color: var(--fg);
         font-family: var(--font-en);
@@ -68,11 +69,11 @@
         z-index: -2;
         content: "";
         background:
-          radial-gradient(ellipse at 74% 18%, transparent 0 25%, rgba(132, 213, 235, 0.18) 42%, rgba(15, 82, 111, 0.14) 56%, transparent 72%),
-          radial-gradient(ellipse at 33% 82%, transparent 0 30%, rgba(143, 226, 232, 0.14) 47%, rgba(23, 94, 120, 0.12) 61%, transparent 76%),
+          radial-gradient(ellipse at 74% 18%, transparent 0 25%, rgba(132, 213, 235, 0.14) 42%, rgba(15, 82, 111, 0.11) 56%, transparent 72%),
+          radial-gradient(ellipse at 33% 82%, transparent 0 30%, rgba(143, 226, 232, 0.1) 47%, rgba(120, 126, 86, 0.08) 61%, transparent 76%),
           radial-gradient(ellipse at 52% 51%, rgba(0, 0, 0, 0.82) 0 16%, transparent 34%);
         filter: blur(48px);
-        opacity: 0.78;
+        opacity: 0.72;
         transform: scale(1.02);
       }
 
@@ -203,10 +204,10 @@
       }
 
       .hero {
-        min-height: 60vh;
+        min-height: 56vh;
         align-items: end;
         padding-top: clamp(28px, 5vw, 72px);
-        padding-bottom: clamp(64px, 10vw, 150px);
+        padding-bottom: clamp(52px, 8vw, 118px);
       }
 
       .hero::before,
@@ -654,15 +655,15 @@
       }
 
       .services {
-        min-height: 84vh;
+        min-height: clamp(440px, 68vh, 720px);
         align-items: end;
-        padding-top: clamp(30px, 5vh, 72px);
-        padding-bottom: clamp(56px, 8vh, 96px);
+        padding-top: clamp(34px, 7vh, 86px);
+        padding-bottom: clamp(64px, 10vh, 118px);
       }
 
       .services-list {
         display: grid;
-        gap: clamp(10px, 1.4vh, 16px);
+        gap: clamp(12px, 1.8vh, 20px);
       }
 
       .services .field {
@@ -677,7 +678,7 @@
         min-height: 16vh;
         align-items: start;
         padding-top: 0;
-        padding-bottom: clamp(14px, 3vh, 34px);
+        padding-bottom: clamp(18px, 4vh, 48px);
       }
 
       .statement .wrap {
@@ -724,8 +725,119 @@
         opacity: 1;
       }
 
+      .clients {
+        min-height: clamp(360px, 48vh, 560px);
+        align-items: start;
+        padding-top: clamp(56px, 10vh, 120px);
+        padding-bottom: clamp(80px, 13vh, 150px);
+      }
+
+      .clients .wrap {
+        display: grid;
+        gap: clamp(34px, 5vw, 62px);
+      }
+
+      .clients-title {
+        color: rgba(242, 244, 239, 0.58);
+        font-size: clamp(12px, 1vw, 14px);
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .clients-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: clamp(12px, 2vw, 22px) clamp(12px, 2.4vw, 26px);
+        max-width: 880px;
+        color: rgba(242, 244, 239, 0.7);
+        font-size: clamp(13px, 1.1vw, 15px);
+        font-weight: 300;
+        letter-spacing: 0.045em;
+        line-height: 1.2;
+      }
+
+      .clients-list a {
+        color: inherit;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .client-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: clamp(34px, 4vw, 42px);
+        padding: 0.72em 1.08em;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.018);
+        backdrop-filter: blur(14px);
+        opacity: 0.82;
+        transform: rotate(0deg);
+        transition: opacity 320ms ease, border-color 320ms ease, background-color 320ms ease, box-shadow 320ms ease, transform 420ms ease;
+        white-space: nowrap;
+      }
+
+      .client-pill:nth-child(1) {
+        --hover-tilt: -1.8deg;
+      }
+
+      .client-pill:nth-child(2) {
+        --hover-tilt: 1.2deg;
+      }
+
+      .client-pill:nth-child(3) {
+        --hover-tilt: -0.7deg;
+      }
+
+      .client-pill:nth-child(4) {
+        --hover-tilt: 1.8deg;
+      }
+
+      .client-pill:nth-child(5) {
+        --hover-tilt: -1.2deg;
+      }
+
+      .client-pill:nth-child(6) {
+        --hover-tilt: 0.8deg;
+      }
+
+      .client-pill:nth-child(7) {
+        --hover-tilt: -1.5deg;
+      }
+
+      .client-pill:nth-child(8) {
+        --hover-tilt: 1deg;
+      }
+
+      .client-pill:hover {
+        border-color: rgba(255, 255, 255, 0.26);
+        background: rgba(255, 255, 255, 0.026);
+        opacity: 1;
+        transform: rotate(var(--hover-tilt, 0deg));
+      }
+
+      .client-pill:focus-visible,
+      .client-pill.is-selected {
+        border-color: rgba(218, 238, 232, 0.28);
+        background: rgba(255, 255, 255, 0.026);
+        box-shadow: 0 0 28px rgba(120, 126, 86, 0.14);
+        opacity: 1;
+        outline: none;
+      }
+
+      .clients-note {
+        color: rgba(242, 244, 239, 0.42);
+        font-size: clamp(13px, 1.1vw, 15px);
+        letter-spacing: 0.08em;
+        line-height: 1.4;
+        text-transform: lowercase;
+      }
+
       footer {
-        min-height: 28vh;
+        min-height: 20vh;
         align-items: end;
         color: var(--muted);
         font-size: 13px;
@@ -738,6 +850,11 @@
         font-family: var(--font-zh);
         font-weight: 400;
         letter-spacing: 0.01em;
+      }
+
+      .clients-list:lang(zh-Hant) {
+        font-weight: 300;
+        letter-spacing: 0.045em;
       }
 
       .footer-line {
@@ -764,10 +881,10 @@
         }
 
         .hero {
-          min-height: 56vh;
+          min-height: 52vh;
           align-items: end;
           padding-top: 32px;
-          padding-bottom: 58px;
+          padding-bottom: 48px;
         }
 
         .image {
@@ -822,13 +939,32 @@
         }
 
         .services {
-          min-height: 76vh;
-          padding-top: 34px;
-          padding-bottom: 58px;
+          min-height: 58vh;
+          padding-top: 40px;
+          padding-bottom: 64px;
         }
 
         .services-list {
-          gap: 14px;
+          gap: 16px;
+        }
+
+        .clients {
+          min-height: 42vh;
+          padding-top: 54px;
+          padding-bottom: 76px;
+        }
+
+        .clients-list {
+          gap: 12px;
+        }
+
+        .client-pill {
+          min-height: 34px;
+          padding: 0.68em 0.96em;
+        }
+
+        .client-pill:hover {
+          transform: rotate(0deg);
         }
       }
 
@@ -904,6 +1040,23 @@
           </div>
         </div>
       </section>
+
+      <section class="clients" aria-label="Selected clients">
+        <div class="wrap">
+          <h2 class="clients-title">SELECTED CLIENTS</h2>
+          <div class="clients-list" lang="zh-Hant">
+            <a class="client-pill" href="archive-07.html" aria-label="Open 顧家醫療 archive">顧家醫療</a>
+            <a class="client-pill" href="archive-14.html" aria-label="Open 初日醫學 archive">初日醫學</a>
+            <a class="client-pill" href="work.html" aria-label="Open works archive for 楠梓特殊學校">楠梓特殊學校</a>
+            <a class="client-pill" href="archive-02.html" aria-label="Open 住展MyHousing TV archive">住展MyHousing TV</a>
+            <a class="client-pill" href="archive-03.html" aria-label="Open DTP WOW archive" lang="en">DTP WOW</a>
+            <a class="client-pill" href="archive-09.html" aria-label="Open 找蔬食 Travelgo archive">找蔬食 Travelgo</a>
+            <a class="client-pill" href="archive-10.html" aria-label="Open 營養師品瑄 archive">營養師品瑄</a>
+            <a class="client-pill" href="archive-15.html" aria-label="Open 惠誠代書 archive">惠誠代書</a>
+          </div>
+          <p class="clients-note">and others</p>
+        </div>
+      </section>
     </main>
 
     <footer id="contact">
@@ -940,6 +1093,28 @@
 
         renderCursorLight();
       }
+
+      const clientPills = document.querySelectorAll(".client-pill");
+      const touchNavigation = window.matchMedia("(hover: none), (pointer: coarse)");
+
+      clientPills.forEach((pill) => {
+        pill.addEventListener("click", (event) => {
+          if (touchNavigation.matches || event.detail === 0) return;
+
+          event.preventDefault();
+          clientPills.forEach((item) => {
+            if (item !== pill) item.classList.remove("is-selected");
+          });
+          pill.classList.add("is-selected");
+        });
+
+        pill.addEventListener("dblclick", (event) => {
+          if (touchNavigation.matches) return;
+
+          event.preventDefault();
+          window.location.href = pill.href;
+        });
+      });
     </script>
   </body>
 </html>
