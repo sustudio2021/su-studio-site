@@ -400,11 +400,35 @@
       }
 
       .submit-row {
+        display: grid;
+        gap: 12px;
+        justify-items: start;
+      }
+
+      .form-status {
+        min-height: 1.4em;
+        color: rgba(242, 244, 239, 0.62);
+        font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        line-height: 1.5;
+      }
+
+      .form-status.is-success {
+        color: rgba(218, 238, 232, 0.82);
+      }
+
+      .form-status.is-error {
+        color: rgba(242, 244, 239, 0.78);
+      }
+
+      .submit-actions {
         display: flex;
         justify-content: flex-start;
       }
 
-      .submit-row button {
+      .submit-actions button {
         border: 1px solid rgba(255, 255, 255, 0.16);
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.026);
@@ -420,10 +444,15 @@
         transition: color 280ms ease, border-color 280ms ease, background-color 280ms ease;
       }
 
-      .submit-row button:hover {
+      .submit-actions button:hover {
         border-color: rgba(255, 255, 255, 0.26);
         background: rgba(255, 255, 255, 0.04);
         color: rgba(242, 244, 239, 0.94);
+      }
+
+      .submit-actions button:disabled {
+        cursor: wait;
+        opacity: 0.48;
       }
 
       @media (max-width: 760px) {
@@ -500,53 +529,56 @@
             告訴我們你正在規劃的內容。我們會閱讀需求，並回覆適合的報價方向。
           </p>
 
-          <form class="inquiry-form" id="projectInquiry">
+          <form class="inquiry-form" id="projectInquiry" action="https://formspree.io/f/xojbbvvd" method="POST">
             <fieldset class="form-field">
               <legend>需要的服務</legend>
               <div class="pill-group">
-                <label class="service-pill"><input type="checkbox" name="services" value="影片剪輯" />影片剪輯</label>
-                <label class="service-pill"><input type="checkbox" name="services" value="拍攝" />拍攝</label>
-                <label class="service-pill"><input type="checkbox" name="services" value="Podcast 剪輯" />Podcast 剪輯</label>
-                <label class="service-pill"><input type="checkbox" name="services" value="空拍" />空拍</label>
-                <label class="service-pill"><input type="checkbox" name="services" value="其他" />其他</label>
+                <label class="service-pill"><input type="checkbox" name="Services needed" value="影片剪輯" />影片剪輯</label>
+                <label class="service-pill"><input type="checkbox" name="Services needed" value="拍攝" />拍攝</label>
+                <label class="service-pill"><input type="checkbox" name="Services needed" value="Podcast 剪輯" />Podcast 剪輯</label>
+                <label class="service-pill"><input type="checkbox" name="Services needed" value="空拍" />空拍</label>
+                <label class="service-pill"><input type="checkbox" name="Services needed" value="其他" />其他</label>
               </div>
             </fieldset>
 
             <fieldset class="form-field">
               <legend>預計成片長度</legend>
               <div class="segment-group">
-                <label class="length-option"><input type="radio" name="length" value="1 分鐘以內" />1 分鐘以內</label>
-                <label class="length-option"><input type="radio" name="length" value="1–5 分鐘" />1–5 分鐘</label>
-                <label class="length-option"><input type="radio" name="length" value="5–10 分鐘" />5–10 分鐘</label>
-                <label class="length-option"><input type="radio" name="length" value="10–20 分鐘" />10–20 分鐘</label>
-                <label class="length-option"><input type="radio" name="length" value="20 分鐘以上" />20 分鐘以上</label>
-                <label class="length-option"><input type="radio" name="length" value="尚不確定" />尚不確定</label>
+                <label class="length-option"><input type="radio" name="Expected final video length" value="1 分鐘以內" />1 分鐘以內</label>
+                <label class="length-option"><input type="radio" name="Expected final video length" value="1–5 分鐘" />1–5 分鐘</label>
+                <label class="length-option"><input type="radio" name="Expected final video length" value="5–10 分鐘" />5–10 分鐘</label>
+                <label class="length-option"><input type="radio" name="Expected final video length" value="10–20 分鐘" />10–20 分鐘</label>
+                <label class="length-option"><input type="radio" name="Expected final video length" value="20 分鐘以上" />20 分鐘以上</label>
+                <label class="length-option"><input type="radio" name="Expected final video length" value="尚不確定" />尚不確定</label>
               </div>
             </fieldset>
 
             <div class="form-row">
               <label class="form-field">
                 <span class="field-label">姓名 / 稱呼</span>
-                <input type="text" name="name" autocomplete="name" />
+                <input type="text" name="Name" autocomplete="name" required />
               </label>
               <label class="form-field">
                 <span class="field-label">聯絡方式</span>
-                <input type="text" name="contact" placeholder="LINE / 電話 / Instagram" autocomplete="tel" />
+                <input type="text" name="Contact method" placeholder="LINE / 電話 / Instagram" autocomplete="tel" />
               </label>
             </div>
 
             <label class="form-field">
               <span class="field-label">電子信箱</span>
-              <input type="email" name="email" autocomplete="email" />
+              <input type="email" name="Email" autocomplete="email" required />
             </label>
 
             <label class="form-field">
               <span class="field-label">其他需求</span>
-              <textarea name="requirements" placeholder="可以告訴我們時程、參考作品、影片數量，或任何需要先知道的事情。"></textarea>
+              <textarea name="Special requirements" placeholder="可以告訴我們時程、參考作品、影片數量，或任何需要先知道的事情。"></textarea>
             </label>
 
             <div class="submit-row">
-              <button type="submit">送出詢問</button>
+              <p class="form-status" id="inquiryStatus" aria-live="polite"></p>
+              <div class="submit-actions">
+                <button type="submit">送出詢問</button>
+              </div>
             </div>
           </form>
         </section>
@@ -554,34 +586,52 @@
     </main>
     <script>
       const inquiryForm = document.querySelector("#projectInquiry");
+      const inquiryStatus = document.querySelector("#inquiryStatus");
+      const submitButton = inquiryForm.querySelector("button[type='submit']");
+      const serviceInputs = inquiryForm.querySelectorAll('input[name="Services needed"]');
 
-      inquiryForm.addEventListener("submit", (event) => {
+      function setInquiryStatus(message, type) {
+        inquiryStatus.textContent = message;
+        inquiryStatus.classList.toggle("is-success", type === "success");
+        inquiryStatus.classList.toggle("is-error", type === "error");
+      }
+
+      inquiryForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
+        const selectedServices = [...serviceInputs].filter((input) => input.checked);
+        if (!selectedServices.length) {
+          setInquiryStatus("請至少選擇一項需要的服務。", "error");
+          serviceInputs[0].focus();
+          return;
+        }
+
+        if (!inquiryForm.reportValidity()) return;
+
         const formData = new FormData(inquiryForm);
-        const services = formData.getAll("services");
-        const length = formData.get("length") || "尚未選擇";
-        const name = formData.get("name") || "";
-        const contact = formData.get("contact") || "";
-        const email = formData.get("email") || "";
-        const requirements = formData.get("requirements") || "";
+        formData.append("_subject", "專案詢問 - SU STUDIO");
 
-        const body = [
-          "專案詢問",
-          "",
-          `需要的服務：${services.length ? services.join("、") : "尚未選擇"}`,
-          `預計成片長度：${length}`,
-          `姓名 / 稱呼：${name}`,
-          `聯絡方式：${contact}`,
-          `電子信箱：${email}`,
-          "",
-          "其他需求：",
-          requirements
-        ].join("\n");
+        submitButton.disabled = true;
+        setInquiryStatus("送出中...", "");
 
-        const subject = encodeURIComponent("專案詢問 - SU STUDIO");
-        const encodedBody = encodeURIComponent(body);
-        window.location.href = `mailto:sustudio2021@gmail.com?subject=${subject}&body=${encodedBody}`;
+        try {
+          const response = await fetch(inquiryForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json"
+            }
+          });
+
+          if (!response.ok) throw new Error("Formspree request failed");
+
+          inquiryForm.reset();
+          setInquiryStatus("已收到您的需求，我們將盡快與您聯繫。", "success");
+        } catch (error) {
+          setInquiryStatus("送出失敗，請稍後再試或直接來信 sustudio2021@gmail.com", "error");
+        } finally {
+          submitButton.disabled = false;
+        }
       });
     </script>
   </body>
