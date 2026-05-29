@@ -137,12 +137,13 @@
         display: grid;
         grid-template-columns: minmax(280px, 520px) minmax(320px, 480px);
         gap: clamp(58px, 8vw, 112px);
-        align-items: end;
+        align-items: start;
+        padding-top: clamp(150px, 24vh, 240px);
+        padding-bottom: clamp(64px, 10vh, 120px);
       }
 
       .contact-block {
         width: min(100%, 520px);
-        padding-bottom: clamp(68px, 12vh, 130px);
         margin-left: clamp(0px, 6vw, 90px);
       }
 
@@ -235,7 +236,6 @@
 
       .inquiry {
         width: min(100%, 480px);
-        margin-bottom: clamp(66px, 11vh, 124px);
         padding: clamp(18px, 2.4vw, 26px);
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 16px;
@@ -450,7 +450,6 @@
 
         .contact-block {
           margin-left: 0;
-          padding-bottom: 0;
         }
 
         .inquiry {
