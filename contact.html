@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <title>SU STUDIO — Image / Sound / Design</title>
     <meta name="title" content="SU STUDIO — Image / Sound / Design" />
     <meta name="description" content="Independent visual practice based in Taiwan." />
@@ -255,6 +259,8 @@
       }
 
       .inquiry-intro {
+        display: grid;
+        gap: 4px;
         max-width: none;
         margin-top: 12px;
         color: rgba(242, 244, 239, 0.58);
@@ -620,7 +626,8 @@
         <section class="inquiry" aria-label="Project inquiry">
           <h2 lang="zh-Hant">專案詢問</h2>
           <p class="inquiry-intro">
-            告訴我們你正在規劃的內容。我們會閱讀需求，並回覆適合的報價方向。
+            <span>告訴我們你正在規劃的內容</span>
+            <span>我們會閱讀需求，並回覆適合的報價方向</span>
           </p>
 
           <form class="inquiry-form" id="projectInquiry" action="https://formspree.io/f/xojbbvvd" method="POST">
@@ -666,7 +673,7 @@
               </label>
               <label class="form-field">
                 <span class="field-label">聯絡方式</span>
-                <input type="text" name="Contact method" placeholder="LINE / 電話 / Instagram" autocomplete="tel" />
+                <input type="text" name="Contact method" placeholder="LINE / 電話 / Instagram" autocomplete="tel" required />
               </label>
             </div>
 
@@ -695,6 +702,7 @@
       const inquiryStatus = document.querySelector("#inquiryStatus");
       const submitButton = inquiryForm.querySelector("button[type='submit']");
       const serviceInputs = inquiryForm.querySelectorAll('input[name="Services needed"]');
+      const lengthInputs = inquiryForm.querySelectorAll('input[name="Expected final video length"]');
       const budgetRange = document.querySelector("#budgetRange");
       const budgetValue = document.querySelector("#budgetValue");
       const budgetRangeValue = document.querySelector("#budgetRangeValue");
@@ -724,6 +732,13 @@
         if (!selectedServices.length) {
           setInquiryStatus("請至少選擇一項需要的服務。", "error");
           serviceInputs[0].focus();
+          return;
+        }
+
+        const selectedLength = [...lengthInputs].find((input) => input.checked);
+        if (!selectedLength) {
+          setInquiryStatus("請選擇預計成片長度。", "error");
+          lengthInputs[0].focus();
           return;
         }
 
