@@ -13,9 +13,9 @@ export const brand = {
   ],
 
   expertise: [
-    "Podcast 製作",
+    "Podcast",
     "人物訪談",
-    "聲音內容製作",
+    "聲音內容",
     "文化藝術專案",
   ],
 
@@ -27,7 +27,7 @@ export const brand = {
   tagline: "Let’s build new ways of seeing.",
 
   description:
-    "SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，專注於影像、聲音與設計的整合，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。",
+    "SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，以人物、場域與聲音為核心，發展人物訪談、Podcast、聲音內容與文化藝術專案，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。",
 
   shortDescription:
     "位於台中的影像設計工作室，專注於影像、聲音與設計的整合。",

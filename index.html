@@ -18,16 +18,16 @@
     </script>
     <title>SU STUDIO｜好述設計影像工作室</title>
     <meta name="title" content="SU STUDIO｜好述設計影像工作室" />
-    <meta name="description" content="SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，專注於影像、聲音與設計的整合，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。" />
+    <meta name="description" content="SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，以人物、場域與聲音為核心，發展人物訪談、Podcast、聲音內容與文化藝術專案，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。" />
     <meta property="og:title" content="SU STUDIO｜好述設計影像工作室" />
-    <meta property="og:description" content="SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，專注於影像、聲音與設計的整合，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。" />
+    <meta property="og:description" content="SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，以人物、場域與聲音為核心，發展人物訪談、Podcast、聲音內容與文化藝術專案，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/og-cover.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SU STUDIO｜好述設計影像工作室" />
-    <meta name="twitter:description" content="SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，專注於影像、聲音與設計的整合，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。" />
+    <meta name="twitter:description" content="SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，以人物、場域與聲音為核心，發展人物訪談、Podcast、聲音內容與文化藝術專案，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。" />
     <meta name="twitter:image" content="/og-cover.jpg" />
     <script type="application/ld+json">
 {
@@ -848,6 +848,14 @@
         letter-spacing: 0.08em;
         line-height: 1.4;
         text-transform: lowercase;
+        text-decoration: none;
+        transition: color 420ms ease, opacity 420ms ease;
+      }
+
+      .clients-note:hover,
+      .clients-note:focus-visible {
+        color: rgba(242, 244, 239, 0.72);
+        outline: none;
       }
 
       .seo-summary {
@@ -857,7 +865,7 @@
         padding-bottom: clamp(70px, 12vh, 130px);
       }
 
-      .seo-summary p {
+      .seo-description {
         max-width: 620px;
         color: rgba(242, 244, 239, 0.42);
         font-family: var(--font-zh);
@@ -865,6 +873,30 @@
         font-weight: 300;
         letter-spacing: 0.04em;
         line-height: 1.9;
+      }
+
+      .seo-concept {
+        margin-bottom: 26px;
+        color: rgba(242, 244, 239, 0.28);
+        font-size: clamp(11px, 0.9vw, 13px);
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        line-height: 1.5;
+        text-transform: uppercase;
+      }
+
+      .seo-details {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        max-width: 620px;
+        margin-top: 22px;
+        color: rgba(242, 244, 239, 0.3);
+        font-family: var(--font-zh);
+        font-size: clamp(11px, 0.95vw, 13px);
+        font-weight: 300;
+        letter-spacing: 0.06em;
+        line-height: 1.7;
       }
 
       footer {
@@ -991,6 +1023,16 @@
           padding-bottom: 64px;
         }
 
+        .seo-description,
+        .seo-details {
+          max-width: min(100%, 560px);
+        }
+
+        .seo-concept {
+          margin-bottom: 20px;
+          letter-spacing: 0.14em;
+        }
+
         .clients-list {
           gap: 12px;
         }
@@ -1091,14 +1133,19 @@
             <a class="client-pill" href="archive-10.html" aria-label="Open 營養師品瑄 archive">營養師品瑄</a>
             <a class="client-pill" href="archive-15.html" aria-label="Open 惠誠代書 archive">惠誠代書</a>
           </div>
-          <p class="clients-note">and others</p>
+          <a class="clients-note" href="work.html">and others</a>
         </div>
       </section>
 
       <section class="seo-summary" aria-label="Studio services summary">
         <div class="wrap">
-          <p lang="zh-Hant">
-            SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，專注於影像、聲音與設計的整合，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。
+          <p class="seo-concept" lang="en">People × Place × Sound × Story</p>
+          <p class="seo-description" lang="zh-Hant">
+            SU STUDIO｜好述設計影像工作室是一間位於台中的影像設計工作室，以人物、場域與聲音為核心，發展人物訪談、Podcast、聲音內容與文化藝術專案，透過 Image、Sound、Design 三個面向，留下值得被觀看與聆聽的故事。
+          </p>
+          <p class="seo-details" lang="zh-Hant">
+            <span>Podcast ｜ 人物訪談 ｜ 聲音內容 ｜ 文化藝術專案</span>
+            <span>行動式 Podcast ｜ 人物故事紀錄</span>
           </p>
         </div>
       </section>

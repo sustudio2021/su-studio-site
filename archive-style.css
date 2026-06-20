@@ -86,9 +86,8 @@ h1:lang(zh-Hant) {
   letter-spacing: .05em;
 }
 .archive-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(24px, 5vw, 70px);
+  display: grid;
+  gap: 10px;
 }
 .archive-meta-link {
   opacity: .72;
@@ -97,6 +96,22 @@ h1:lang(zh-Hant) {
 .archive-meta-link:hover,
 .archive-meta-link:focus-visible {
   opacity: 1;
+}
+.archive-description {
+  max-width: 680px;
+  margin: -24px 0 0;
+  color: rgba(242,244,239,.5);
+  font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC", sans-serif;
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 300;
+  letter-spacing: .04em;
+  line-height: 1.8;
+}
+.archive-description-en {
+  margin-top: -44px;
+  color: rgba(242,244,239,.34);
+  font-family: var(--font-en);
+  letter-spacing: .04em;
 }
 .archive-section {
   display: grid;
@@ -219,5 +234,7 @@ h1:lang(zh-Hant) {
   main { padding-right: 20px; padding-left: 20px; }
   .video-grid { grid-template-columns: 1fr; }
   .video-grid.is-shorts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .archive-meta { display: grid; gap: 12px; }
+  .archive-meta { gap: 10px; }
+  .archive-description { margin-top: -8px; }
+  .archive-description-en { margin-top: -22px; }
 }

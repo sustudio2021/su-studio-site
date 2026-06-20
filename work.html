@@ -331,6 +331,7 @@
         display: flex;
         justify-content: space-between;
         gap: 18px;
+        min-width: 0;
         color: var(--soft);
         font-size: clamp(12px, 1vw, 14px);
         letter-spacing: 0.12em;
@@ -338,7 +339,16 @@
         text-transform: uppercase;
       }
 
-      .category { color: rgba(242, 244, 239, 0.42); }
+      .archive-meta span:first-child { flex: 0 0 auto; }
+
+      .category {
+        min-width: 0;
+        overflow: hidden;
+        color: rgba(242, 244, 239, 0.42);
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
       .client-name, .archive-meta { position: relative; z-index: 1; }
 
       @keyframes archivePreviewDrift {
@@ -390,7 +400,7 @@
               <h2 class="client-name">DTP WOW</h2>
               <div class="archive-meta">
                 <span>2025-2026</span>
-                <span class="category">SHORTS</span>
+                <span class="category">PRODUCTION SUPPORT / SHORTS</span>
               </div>
             </div>
           </a>
@@ -401,7 +411,7 @@
               <h2 class="client-name" lang="zh-Hant">台灣櫻花</h2>
               <div class="archive-meta">
                 <span>2026</span>
-                <span class="category">SHORTS</span>
+                <span class="category">PRODUCTION SUPPORT / SHORTS</span>
               </div>
             </div>
           </a>
@@ -412,7 +422,7 @@
               <h2 class="client-name" lang="zh-Hant">Ki 笑人生</h2>
               <div class="archive-meta">
                 <span>2026</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -423,7 +433,7 @@
               <h2 class="client-name" lang="zh-Hant">Ki戲人生</h2>
               <div class="archive-meta">
                 <span>2026</span>
-                <span class="category">PODCAST</span>
+                <span class="category">PRODUCTION SUPPORT / PODCAST</span>
               </div>
             </div>
           </a>
@@ -434,7 +444,7 @@
               <h2 class="client-name" lang="zh-Hant">顧家醫療</h2>
               <div class="archive-meta">
                 <span>2026</span>
-                <span class="category">YOUTUBE / SHORTS</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE / SHORTS</span>
               </div>
             </div>
           </a>
@@ -445,7 +455,7 @@
               <h2 class="client-name" lang="zh-Hant">住展MyHousing TV</h2>
               <div class="archive-meta">
                 <span>2025-2026</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -456,7 +466,7 @@
               <h2 class="client-name" lang="zh-Hant">米愛拉☆海外致富趣</h2>
               <div class="archive-meta">
                 <span>2026</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -469,7 +479,7 @@
               <h2 class="client-name" lang="zh-Hant">雨漏熱 專業工程指定防水品牌</h2>
               <div class="archive-meta">
                 <span>2024-2026</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -480,7 +490,7 @@
               <h2 class="client-name" lang="zh-Hant">營養健身葛格Peeta</h2>
               <div class="archive-meta">
                 <span>2025</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -491,7 +501,7 @@
               <h2 class="client-name" lang="zh-Hant">夏恩英語</h2>
               <div class="archive-meta">
                 <span>2024-2025</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -502,7 +512,7 @@
               <h2 class="client-name" lang="zh-Hant">高雄市原生藝術育成中心</h2>
               <div class="archive-meta">
                 <span>2025</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -513,7 +523,7 @@
               <h2 class="client-name" lang="zh-Hant">鳥先生&amp;鳥夫人</h2>
               <div class="archive-meta">
                 <span>2024-2025</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -524,7 +534,7 @@
               <h2 class="client-name" lang="zh-Hant">惠誠代書</h2>
               <div class="archive-meta">
                 <span>2023-2025</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -535,7 +545,7 @@
               <h2 class="client-name" lang="zh-Hant">找蔬食 Traveggo</h2>
               <div class="archive-meta">
                 <span>2025</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -546,7 +556,7 @@
               <h2 class="client-name" lang="zh-Hant">營養師品瑄</h2>
               <div class="archive-meta">
                 <span>2024-2025</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -557,7 +567,7 @@
               <h2 class="client-name" lang="zh-Hant">「在一起」家人聯展</h2>
               <div class="archive-meta">
                 <span>2025</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -568,7 +578,7 @@
               <h2 class="client-name" lang="zh-Hant">初日醫學 - 宋晏仁醫師 x Cofit</h2>
               <div class="archive-meta">
                 <span>2023-2025</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -579,7 +589,7 @@
               <h2 class="client-name" lang="zh-Hant">N楚立功</h2>
               <div class="archive-meta">
                 <span>2024-2025</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -590,7 +600,7 @@
               <h2 class="client-name" lang="zh-Hant">2024清水眷村-進駐計畫成果紀錄</h2>
               <div class="archive-meta">
                 <span>2024</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -601,7 +611,7 @@
               <h2 class="client-name" lang="zh-Hant">尹子潔個展－我想再煎荷包蛋</h2>
               <div class="archive-meta">
                 <span>2024</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -612,7 +622,7 @@
               <h2 class="client-name" lang="zh-Hant">天主教左營聖女小德蘭堂</h2>
               <div class="archive-meta">
                 <span>2024</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -623,7 +633,7 @@
               <h2 class="client-name" lang="zh-Hant">三個麻瓜</h2>
               <div class="archive-meta">
                 <span>2023-2024</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -634,7 +644,7 @@
               <h2 class="client-name" lang="zh-Hant">2023臺中市松柏國民美展</h2>
               <div class="archive-meta">
                 <span>2023</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -645,7 +655,7 @@
               <h2 class="client-name" lang="zh-Hant">MADAMUA 化妝品形象廣告</h2>
               <div class="archive-meta">
                 <span>2023</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -656,7 +666,7 @@
               <h2 class="client-name" lang="zh-Hant">台灣達人秀/REDOU</h2>
               <div class="archive-meta">
                 <span>2023</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -667,7 +677,7 @@
               <h2 class="client-name" lang="zh-Hant">臺灣尋奇 \ 露西個人頻道</h2>
               <div class="archive-meta">
                 <span>2023</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -678,7 +688,7 @@
               <h2 class="client-name" lang="zh-Hant">挑嘴男</h2>
               <div class="archive-meta">
                 <span>2023</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -689,7 +699,7 @@
               <h2 class="client-name" lang="zh-Hant">2023臺灣美術新貌獎</h2>
               <div class="archive-meta">
                 <span>2023</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -700,7 +710,7 @@
               <h2 class="client-name" lang="zh-Hant">莊頭北長知識-幕後花絮</h2>
               <div class="archive-meta">
                 <span>2023</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -711,7 +721,7 @@
               <h2 class="client-name" lang="zh-Hant">初秋蹤影 花藝示範表演</h2>
               <div class="archive-meta">
                 <span>2022</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -722,7 +732,7 @@
               <h2 class="client-name" lang="zh-Hant">大師來占台之麻將神算</h2>
               <div class="archive-meta">
                 <span>2022</span>
-                <span class="category">YOUTUBE</span>
+                <span class="category">PRODUCTION SUPPORT / YOUTUBE</span>
               </div>
             </div>
           </a>
@@ -733,7 +743,7 @@
               <h2 class="client-name" lang="zh-Hant">2022臺灣美術新貌獎</h2>
               <div class="archive-meta">
                 <span>2022</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -744,7 +754,7 @@
               <h2 class="client-name" lang="zh-Hant">臺灣美術新貌20週年</h2>
               <div class="archive-meta">
                 <span>2022</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -755,7 +765,7 @@
               <h2 class="client-name" lang="zh-Hant">2022 南屯，美好生活</h2>
               <div class="archive-meta">
                 <span>2022</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -766,7 +776,7 @@
               <h2 class="client-name" lang="zh-Hant">論壇活動紀錄花絮</h2>
               <div class="archive-meta">
                 <span>2022</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -777,7 +787,7 @@
               <h2 class="client-name" lang="zh-Hant">2021清風茶宴-雲端喫趣茶</h2>
               <div class="archive-meta">
                 <span>2022</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>
@@ -788,7 +798,7 @@
               <h2 class="client-name" lang="zh-Hant">2021臺灣美術新貌獎</h2>
               <div class="archive-meta">
                 <span>2021</span>
-                <span class="category">PROJECT</span>
+                <span class="category">FULL PRODUCTION / PROJECT</span>
               </div>
             </div>
           </a>

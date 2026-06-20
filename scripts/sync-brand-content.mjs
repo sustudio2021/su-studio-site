@@ -58,6 +58,10 @@ const replaceSchema = (html) =>
     `<script type="application/ld+json">\n${organizationSchema}\n    </script>`,
   );
 
+const conceptLine = brand.interests.join(" × ");
+const expertiseLine = brand.expertise.join(" ｜ ");
+const signatureLine = brand.signature.join(" ｜ ");
+
 const writeHtml = (file, transform) => {
   const filePath = join(root, file);
   const html = readFileSync(filePath, "utf8");
@@ -79,7 +83,7 @@ writeHtml("index.html", (html) => {
     .replace(/<p>structure<\/p>/, `<p>${escapeHtml(brand.concepts.design)}</p>`)
     .replace(
       /<section class="seo-summary" aria-label="Studio services summary">[\s\S]*?<\/section>/,
-      `<section class="seo-summary" aria-label="Studio services summary">\n        <div class="wrap">\n          <p lang="zh-Hant">\n            ${escapeHtml(brand.description)}\n          </p>\n        </div>\n      </section>`,
+      `<section class="seo-summary" aria-label="Studio services summary">\n        <div class="wrap">\n          <p class="seo-concept" lang="en">${escapeHtml(conceptLine)}</p>\n          <p class="seo-description" lang="zh-Hant">\n            ${escapeHtml(brand.description)}\n          </p>\n          <p class="seo-details" lang="zh-Hant">\n            <span>${escapeHtml(expertiseLine)}</span>\n            <span>${escapeHtml(signatureLine)}</span>\n          </p>\n        </div>\n      </section>`,
     )
     .replace(/<img class="footer-logo" src="su-logo\.png" alt="[^"]*" \/>/, `<img class="footer-logo" src="su-logo.png" alt="${escapeHtml(brand.name)}" />`)
     .replace(/<span>Image \/ Sound \/ Design<\/span>/, `<span>${escapeHtml(brand.identity.at(-1))}</span>`);
@@ -92,10 +96,7 @@ writeHtml("about.html", (html) => {
     .replace(/<img class="studio-logo" src="su-logo\.png" alt="[^"]*" \/>/, `<img class="studio-logo" src="su-logo.png" alt="${escapeHtml(brand.name)}" />`)
     .replace(/<span>SU STUDIO<\/span>/, `<span>${escapeHtml(brand.name)}</span>`)
     .replace(/<span>Based in [^<]*<\/span>/, `<span>Based in ${escapeHtml(brand.location)}</span>`)
-    .replace(
-      /<p class="brand-description" lang="zh-Hant">[\s\S]*?<\/p>/,
-      `<p class="brand-description" lang="zh-Hant">\n          ${escapeHtml(brand.description)}\n        </p>`,
-    )
+    .replace(/\n\s*<p class="brand-description" lang="zh-Hant">[\s\S]*?<\/p>\n/, "\n")
     .replace(/<a href="mailto:[^"]*">[^<]*<\/a>/, `<a href="mailto:${escapeHtml(brand.contact.email)}">${escapeHtml(brand.contact.email)}</a>`);
   return html;
 });
