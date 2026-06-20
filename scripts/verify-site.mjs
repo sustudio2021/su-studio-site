@@ -3,6 +3,9 @@ import { extname, join } from "node:path";
 
 const root = process.cwd();
 const htmlFiles = readdirSync(root).filter((file) => extname(file) === ".html");
+const cleanUrlTargets = new Map(
+  htmlFiles.map((file) => [`/${file.replace(/\.html$/, "")}`, file]),
+);
 const localTargets = new Set([
   ...htmlFiles,
   "archive-style.css",
@@ -37,9 +40,10 @@ for (const file of htmlFiles) {
 
     const target = value.split("#")[0].split("?")[0];
     if (!target) continue;
+    const normalizedTarget = cleanUrlTargets.get(target) || target;
 
-    referencedLocalFiles.add(target);
-    if (!existsSync(join(root, target))) {
+    referencedLocalFiles.add(normalizedTarget);
+    if (!existsSync(join(root, normalizedTarget))) {
       missing.push(`${file} -> ${target}`);
     }
   }
