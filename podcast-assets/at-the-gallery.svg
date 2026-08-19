@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-label="Minimal gallery with two chairs and two microphones">
+  <defs>
+    <linearGradient id="room" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0d1112"/>
+      <stop offset=".52" stop-color="#060809"/>
+      <stop offset="1" stop-color="#010203"/>
+    </linearGradient>
+    <radialGradient id="light" cx="54%" cy="30%" r="62%">
+      <stop offset="0" stop-color="#cbd9d4" stop-opacity=".24"/>
+      <stop offset=".46" stop-color="#2f6975" stop-opacity=".13"/>
+      <stop offset="1" stop-color="#010203" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .1"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#room)"/>
+  <rect width="1200" height="1600" fill="url(#light)"/>
+  <path d="M160 330h270v370H160zM770 330h270v370H770z" fill="#151b1c" stroke="#f2f4ef" stroke-opacity=".14" stroke-width="3"/>
+  <path d="M0 1170h1200L1000 1600H210Z" fill="#050606"/>
+  <path d="M330 910c78 0 142 44 142 100v132H188v-132c0-56 64-100 142-100ZM870 910c78 0 142 44 142 100v132H728v-132c0-56 64-100 142-100Z" fill="#0a0c0d" stroke="#f2f4ef" stroke-opacity=".2" stroke-width="4"/>
+  <path d="M330 1142v190M236 1332h188M870 1142v190M776 1332h188" stroke="#f2f4ef" stroke-opacity=".18" stroke-width="7" stroke-linecap="round"/>
+  <path d="M432 805l-60 120M766 805l60 120" stroke="#dbe6df" stroke-opacity=".42" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="432" cy="785" rx="28" ry="62" fill="#030404" stroke="#dbe6df" stroke-opacity=".48" stroke-width="4"/>
+  <ellipse cx="766" cy="785" rx="28" ry="62" fill="#030404" stroke="#dbe6df" stroke-opacity=".48" stroke-width="4"/>
+  <rect width="1200" height="1600" filter="url(#grain)"/>
+</svg>

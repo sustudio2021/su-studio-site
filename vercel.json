@@ -8,6 +8,11 @@
       "source": "/contact.html",
       "destination": "/contact",
       "permanent": true
+    },
+    {
+      "source": "/podcast.html",
+      "destination": "/podcast",
+      "permanent": true
     }
   ],
   "headers": [

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-label="Two people recording by the sea at sunset">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#06161a"/>
+      <stop offset=".48" stop-color="#102b2f"/>
+      <stop offset=".66" stop-color="#806f4e"/>
+      <stop offset="1" stop-color="#010203"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="80%" cy="48%" r="38%">
+      <stop offset="0" stop-color="#f0c180" stop-opacity=".45"/>
+      <stop offset=".54" stop-color="#787e56" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#010203" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .12"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#sky)"/>
+  <rect width="1200" height="1600" fill="url(#sun)"/>
+  <path d="M0 880c210-34 346 46 538 10 238-45 400-80 662-18v728H0Z" fill="#020303" opacity=".86"/>
+  <path d="M0 875c220 32 354 42 570 6 210-35 386-42 630-5" fill="none" stroke="#d8ddce" stroke-opacity=".2" stroke-width="5"/>
+  <path d="M396 764c50 0 92 52 92 118v190H304V882c0-66 42-118 92-118ZM780 758c50 0 92 52 92 118v196H688V876c0-66 42-118 92-118Z" fill="#060606" opacity=".9"/>
+  <circle cx="396" cy="710" r="56" fill="#050606"/><circle cx="780" cy="704" r="56" fill="#050606"/>
+  <path d="M505 732l-64 94M678 728l64 96" stroke="#eef1e8" stroke-opacity=".46" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="508" cy="714" rx="24" ry="54" fill="#020303" stroke="#eef1e8" stroke-opacity=".44" stroke-width="4"/>
+  <ellipse cx="676" cy="710" rx="24" ry="54" fill="#020303" stroke="#eef1e8" stroke-opacity=".44" stroke-width="4"/>
+  <rect width="1200" height="1600" filter="url(#grain)"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-label="Dark podcast studio with a microphone">
+  <defs>
+    <radialGradient id="light" cx="32%" cy="22%" r="62%">
+      <stop offset="0" stop-color="#d6c1a3" stop-opacity=".52"/>
+      <stop offset=".36" stop-color="#787e56" stop-opacity=".23"/>
+      <stop offset=".72" stop-color="#08242b" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#010203" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="desk" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#171717"/>
+      <stop offset=".6" stop-color="#050606"/>
+      <stop offset="1" stop-color="#000"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .13"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1200" height="1600" fill="#010203"/>
+  <rect width="1200" height="1600" fill="url(#light)"/>
+  <ellipse cx="500" cy="505" rx="310" ry="420" fill="#d9e9df" opacity=".08" filter="url(#soft)"/>
+  <rect x="0" y="1040" width="1200" height="560" fill="url(#desk)"/>
+  <path d="M610 475c78 0 132 64 132 150v210c0 86-54 150-132 150s-132-64-132-150V625c0-86 54-150 132-150Z" fill="#090b0c" stroke="#d8ded8" stroke-opacity=".42" stroke-width="4"/>
+  <path d="M544 610h132M544 670h132M544 730h132M544 790h132M544 850h132" stroke="#d8ded8" stroke-opacity=".18" stroke-width="5"/>
+  <path d="M610 986v205M486 1191h248M570 1191l-72 138M650 1191l72 138" stroke="#d8ded8" stroke-opacity=".34" stroke-width="8" stroke-linecap="round"/>
+  <rect width="1200" height="1600" filter="url(#grain)" opacity=".8"/>
+</svg>

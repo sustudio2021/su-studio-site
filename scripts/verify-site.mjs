@@ -40,7 +40,7 @@ for (const file of htmlFiles) {
 
     const target = value.split("#")[0].split("?")[0];
     if (!target) continue;
-    const normalizedTarget = cleanUrlTargets.get(target) || target;
+    const normalizedTarget = cleanUrlTargets.get(target) || target.replace(/^\//, "");
 
     referencedLocalFiles.add(normalizedTarget);
     if (!existsSync(join(root, normalizedTarget))) {

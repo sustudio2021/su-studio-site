@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync } from "node:fs";
+import { copyFileSync, cpSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const root = process.cwd();
@@ -13,6 +13,13 @@ for (const file of rootPublicFiles) {
   }
 
   copyFileSync(source, target);
+}
+
+const podcastAssetsSource = join(root, "public", "podcast-assets");
+const podcastAssetsTarget = join(root, "podcast-assets");
+
+if (existsSync(podcastAssetsSource)) {
+  cpSync(podcastAssetsSource, podcastAssetsTarget, { recursive: true });
 }
 
 console.log("Synced public root files.");

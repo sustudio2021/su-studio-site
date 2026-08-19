@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-label="Portable podcast recording setup in a quiet natural place">
+  <defs>
+    <radialGradient id="forest" cx="58%" cy="28%" r="72%">
+      <stop offset="0" stop-color="#9ea77a" stop-opacity=".32"/>
+      <stop offset=".36" stop-color="#25494a" stop-opacity=".28"/>
+      <stop offset=".72" stop-color="#071211" stop-opacity=".82"/>
+      <stop offset="1" stop-color="#010203"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .13"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="1200" height="1600" fill="#010203"/>
+  <rect width="1200" height="1600" fill="url(#forest)"/>
+  <path d="M100 0c42 240 30 492-40 756M342 0c-34 242-26 508 44 802M960 0c-50 250-46 510 12 824" stroke="#b8c0a1" stroke-opacity=".13" stroke-width="18" filter="url(#soft)"/>
+  <path d="M0 1020c190-80 410-96 666-56 190 30 352 22 534-54v690H0Z" fill="#020303" opacity=".84"/>
+  <path d="M500 850c56 0 102 48 102 108v144H398V958c0-60 46-108 102-108Z" fill="#090b0a" stroke="#edf2e9" stroke-opacity=".18" stroke-width="4"/>
+  <path d="M500 1102v170M416 1272h168" stroke="#edf2e9" stroke-opacity=".18" stroke-width="7" stroke-linecap="round"/>
+  <path d="M706 748l-116 122" stroke="#edf2e9" stroke-opacity=".46" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="720" cy="728" rx="28" ry="62" fill="#020303" stroke="#edf2e9" stroke-opacity=".5" stroke-width="4"/>
+  <rect x="650" y="1125" width="190" height="120" rx="8" fill="#050606" stroke="#edf2e9" stroke-opacity=".2" stroke-width="3"/>
+  <path d="M682 1188h124M705 1155v66M745 1155v66M785 1155v66" stroke="#edf2e9" stroke-opacity=".18" stroke-width="3"/>
+  <rect width="1200" height="1600" filter="url(#grain)"/>
+</svg>
