@@ -565,7 +565,10 @@
         .site-nav {
           top: 32px;
           right: 20px;
-          gap: 20px;
+          left: 20px;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          gap: 14px;
           font-size: 12px;
           letter-spacing: .14em;
         }
@@ -590,6 +593,16 @@
           padding-top: 54px;
         }
 
+        h1 {
+          font-size: clamp(28px, 9vw, 68px);
+        }
+
+        .intro-grid > *,
+        .service-item > *,
+        .service-copy {
+          min-width: 0;
+        }
+
         .copy {
           font-size: clamp(18px, 5.4vw, 24px);
           line-height: 1.72;
@@ -605,8 +618,10 @@
         .podcast-card.is-active,
         .podcast-card:hover,
         .podcast-card:focus-visible {
-          display: grid;
-          place-items: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           min-height: 74px;
           padding: 20px;
           flex: none;
@@ -627,7 +642,8 @@
           margin-top: 0;
           text-align: center;
           transform: none;
-          white-space: nowrap;
+          white-space: normal;
+          overflow-wrap: anywhere;
         }
 
         .card-detail,
@@ -638,25 +654,28 @@
           width: min(100%, 440px);
           text-align: center;
           transform: none;
-          overflow: hidden;
+          min-width: 0;
+          max-width: 100%;
+          overflow: visible;
         }
 
         .card-detail {
-          max-height: 0;
+          display: none;
           margin-top: 0;
         }
 
-        .podcast-card.is-active .card-detail,
-        .podcast-card:hover .card-detail,
-        .podcast-card:focus-visible .card-detail {
-          max-height: 260px;
+        .podcast-card.is-active .card-detail {
+          display: block;
+          max-height: none;
           margin-top: 18px;
         }
 
         .card-detail strong,
-        .card-detail span {
-          word-break: keep-all;
-          overflow-wrap: normal;
+        .card-detail span,
+        .what-intro,
+        .service-description {
+          word-break: normal;
+          overflow-wrap: anywhere;
         }
 
         .podcast-card img {
@@ -718,7 +737,7 @@
               <img src="podcast-assets/at-your-studio.png" alt="Dark recording studio with one professional podcast microphone" loading="lazy">
               <span class="card-label">AT YOUR STUDIO</span>
               <span class="card-detail" lang="zh-Hant">
-                <strong>在你的工作空間，留下屬於你的聲音</strong>
+                <strong>在你的工作空間留下屬於你的聲音</strong>
                 <span>我們將錄製設備帶到現場，依照空間與內容安排適合的錄製方式，讓熟悉的場域也成為 Podcast 的一部分</span>
               </span>
             </button>
@@ -726,7 +745,7 @@
               <img src="podcast-assets/at-your-store.png" alt="Warm boutique storefront with a podcast microphone inside" loading="lazy">
               <span class="card-label">AT YOUR STORE</span>
               <span class="card-detail" lang="zh-Hant">
-                <strong>讓對話，發生在品牌真正生活的地方</strong>
+                <strong>讓對話發生在品牌真正生活的地方</strong>
                 <span>從店鋪、選物空間到品牌據點，在原有的空間裡完成聲音與影像紀錄，留下品牌與人的真實對話</span>
               </span>
             </button>
@@ -734,7 +753,7 @@
               <img src="podcast-assets/at-the-gallery.png" alt="Minimal gallery interior with two chairs and two microphones" loading="lazy">
               <span class="card-label">AT THE GALLERY</span>
               <span class="card-detail" lang="zh-Hant">
-                <strong>讓作品之外的聲音，也被留下</strong>
+                <strong>讓作品之外的聲音也被留下</strong>
                 <span>適合藝術家對談、展覽紀錄與文化內容，透過聲音與影像，延伸作品背後的想法與故事</span>
               </span>
             </button>
@@ -742,7 +761,7 @@
               <img src="podcast-assets/by-the-sea.png" alt="Two people recording a quiet conversation by the sea at sunset" loading="lazy">
               <span class="card-label">BY THE SEA</span>
               <span class="card-detail" lang="zh-Hant">
-                <strong>有些對話，不一定適合發生在室內</strong>
+                <strong>有些對話不一定適合發生在室內</strong>
                 <span>海邊、公園或城市的一角，我們依照環境與內容規劃錄製方式，讓場域本身也成為對話的一部分</span>
               </span>
             </button>
@@ -750,7 +769,7 @@
               <img src="podcast-assets/anywhere-story.png" alt="Portable podcast recording setup in a natural outdoor environment" loading="lazy">
               <span class="card-label">ANYWHERE THE STORY HAPPENS</span>
               <span class="card-detail" lang="zh-Hant">
-                <strong>故事在哪裡發生，我們就把錄製帶到哪裡</strong>
+                <strong>故事在哪裡發生我們就把錄製帶到哪裡</strong>
                 <span>Podcast 不只屬於錄音室從聲音、影像到現場紀錄，我們尋找適合每一段對話發生的地方</span>
               </span>
             </button>
