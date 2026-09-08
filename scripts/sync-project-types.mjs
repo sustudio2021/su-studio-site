@@ -75,13 +75,19 @@ for (const archive of rootArchives) {
 
   const year = extractYear(html, archive);
   const projectType = types.includes("project") ? projectTypes.fullProduction : projectTypes.productionSupport;
+  // Keep explicit per-project service credits when syncing shared metadata.
+  const projectDescriptions = [...html.matchAll(/<p class="archive-description[^>]*\bdata-project-description[^>]*>[\s\S]*?<\/p>/g)]
+    .map((match) => match[0]);
+  const descriptions = projectDescriptions.length > 0
+    ? projectDescriptions.join("\n          ")
+    : `<p class="archive-description" lang="zh-Hant">${escapeHtml(projectType.chineseDescription || "")}</p>
+          <p class="archive-description archive-description-en" lang="en">${escapeHtml(projectType.shortDescription || projectType.description)}</p>`;
   const meta = `          <div class="archive-meta">
             <span>${escapeHtml(year)}</span>
             <span>${escapeHtml(projectType.name)}</span>
             <span class="archive-meta-categories">${contentTypeLinks(types)}</span>
           </div>
-          <p class="archive-description" lang="zh-Hant">${escapeHtml(projectType.chineseDescription || "")}</p>
-          <p class="archive-description archive-description-en" lang="en">${escapeHtml(projectType.shortDescription || projectType.description)}</p>`;
+          ${descriptions}`;
 
   html = html.replace(
     /          <div class="archive-meta">[\s\S]*?<\/div>(?:\n\s*<p class="archive-description[^>]*>[\s\S]*?<\/p>)*/m,
