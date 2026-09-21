@@ -15,11 +15,12 @@
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="stylesheet" href="archive-style.css" />
-  <link rel="stylesheet" href="kai-style.css" />
+  <link rel="stylesheet" href="kai-style.css?v=898ce8560a3e" />
   <script src="scripts/kai-viewer.js" type="module"></script>
   <link rel="stylesheet" href="kai-study.css" />
   <script src="scripts/kai-study.js" type="module"></script>
   <script src="scripts/kai-world.js" type="module"></script>
+  <script src="scripts/kai-voice.js?v=2d099ee8c665" type="module"></script>
 </head>
 <body class="kai-page">
   <nav class="site-nav" aria-label="Primary navigation">
@@ -32,7 +33,7 @@
   <main class="kai-hero" id="kai">
     <a class="back kai-back" href="work.html" data-back-to-work><span aria-hidden="true">↖</span> Back to Work</a>
     <div class="kai-room" aria-hidden="true"><div class="kai-light"></div><div class="kai-floor"></div></div>
-    <div class="kai-index"><span>01 / 04</span><p>MEET <br />THE CHARACTER</p><i aria-hidden="true"></i></div>
+    <div class="kai-index"><span>01 / 05</span><p>MEET <br />THE CHARACTER</p><i aria-hidden="true"></i></div>
     <h1 class="kai-title">KAI</h1>
     <p class="kai-subtitle">AI Character Project <br />by SU STUDIO</p>
     <div class="kai-stage">
@@ -60,7 +61,7 @@
     <span class="kai-copyright">© 2026 SU STUDIO</span>
   </main>
   <section class="kai-study" id="character-study" aria-labelledby="kai-study-title">
-    <header class="kai-study-heading"><span>02 / 04</span><h2 id="kai-study-title">CHARACTER STUDY</h2></header>
+    <header class="kai-study-heading"><span>02 / 05</span><h2 id="kai-study-title">CHARACTER STUDY</h2></header>
     <div class="kai-study-gallery" data-study-gallery tabindex="0" role="region" aria-label="KAI Character Study photographs" aria-describedby="kai-study-help">
         <picture class="kai-study-image kai-study-hands" style="--study-height: 94%; --study-offset: -1%; aspect-ratio: 1024 / 1536">
           <source type="image/avif" srcset="kai-assets/study/kai-study-01-hands-480.avif 480w, kai-assets/study/kai-study-01-hands-768.avif 768w, kai-assets/study/kai-study-01-hands-1024.avif 1024w" sizes="(max-width: 600px) 78vw, 38vh" />
@@ -102,7 +103,7 @@
     <p class="kai-sr" id="kai-study-help">Drag or scroll horizontally to explore seven photographs. On a keyboard, use the left and right arrow keys. On touch screens, swipe horizontally; vertical scrolling remains available.</p>
   </section>
   <section class="kai-world" id="kais-world" aria-labelledby="kai-world-title">
-    <header class="kai-world-heading"><span>03 / 04</span><h2 id="kai-world-title">KAI'S WORLD</h2></header>
+    <header class="kai-world-heading"><span>03 / 05</span><h2 id="kai-world-title">KAI'S WORLD</h2></header>
     <div class="kai-world-canvas" id="kai-world-media">
       <figure data-world-size="large" style="--world-x:9%; --world-y:20%; --world-w:24%; --world-mobile-w:84%; --world-mobile-left:4%; --world-depth:4" class="kai-world-media kai-world-video kai-world-featured">
         <button class="kai-world-surface" type="button" data-world-video aria-label="Play: Kai’s outfit film on a monochrome staircase" aria-pressed="false">
@@ -159,8 +160,27 @@
     </div>
     <button class="kai-world-more" type="button" aria-expanded="false" aria-controls="kai-world-media">more</button>
   </section>
+  <section class="kai-voice" id="kais-voice" aria-labelledby="kai-voice-title">
+    <div class="kai-voice-copy">
+      <p class="kai-voice-eyebrow">04 / 05</p>
+      <h2 id="kai-voice-title">KAI'S<br />VOICE</h2>
+      <p class="kai-voice-intro" lang="zh-Hant">聲音讓角色有了另一種存在方式。<br />現在，聽聽 Kai 怎麼說話。</p>
+      <div class="kai-voice-meta"><span class="kai-voice-language">LANGUAGE / 中文</span><span class="kai-voice-time">00:00 / —</span></div>
+      <div class="kai-voice-wave" aria-hidden="true"><div class="kai-voice-wave-base"></div><div class="kai-voice-wave-played"></div></div>
+      <div class="kai-voice-languages" role="group" aria-label="Voice language">
+        <button type="button" data-voice-language="zh" aria-pressed="true" lang="zh-Hant">中文</button>
+        <button type="button" data-voice-language="en" aria-pressed="false">ENGLISH</button>
+      </div>
+      <p class="kai-voice-status" role="status" aria-live="polite"></p>
+    </div>
+    <div class="kai-voice-film">
+      <video playsinline muted preload="none" poster="kai-assets/voice/kai-voice-zh.webp" width="720" height="1280" aria-hidden="true"></video>
+      <button class="kai-voice-toggle" type="button" aria-label="播放 Kai 的中文聲音" aria-pressed="false"><span aria-hidden="true">▶</span></button>
+    </div>
+    <audio class="kai-voice-audio" preload="none"></audio>
+  </section>
   <section class="kai-about" id="about-the-project" aria-labelledby="kai-about-title">
-    <header class="kai-about-heading"><span>04 / 04</span><h2 id="kai-about-title">ABOUT THE PROJECT</h2></header>
+    <header class="kai-about-heading"><span>05 / 05</span><h2 id="kai-about-title">ABOUT THE PROJECT</h2></header>
     <div class="kai-about-layout">
       <div class="kai-about-story">
         <p class="kai-about-lead">A character in progress.<br />A world taking shape.</p>
