@@ -1,0 +1,130 @@
+[
+  {
+    "kind": "photo",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/ChatGPT Image Sep 8, 2026, 08_19_18 PM.png",
+    "stem": "kai-world-cafe-outside",
+    "width": 1122,
+    "height": 1402,
+    "sourceBytes": 2100981,
+    "sourceSha256": "9a7c2d66fbb7c673f7274fd07ee38fae37912ffc96793b43f20928728b6e8dab"
+  },
+  {
+    "kind": "photo",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/ChatGPT Image Sep 8, 2026, 08_19_28 PM.png",
+    "stem": "kai-world-cafe-inside",
+    "width": 1122,
+    "height": 1402,
+    "sourceBytes": 2134596,
+    "sourceSha256": "5902e1b47db87e96b3f4adea087b3cf1045ba8eec176798a6fde596a3381b4c3"
+  },
+  {
+    "kind": "photo",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/ChatGPT Image Sep 8, 2026, 08_19_50 PM.png",
+    "stem": "kai-world-street",
+    "width": 1086,
+    "height": 1448,
+    "sourceBytes": 2544383,
+    "sourceSha256": "d069114bfaa04a5e8933a7af6c717ae83fd846d2edfcc41729d1e9fc9008b92d"
+  },
+  {
+    "kind": "photo",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/ChatGPT Image Sep 8, 2026, 08_20_04 PM.png",
+    "stem": "kai-world-kitchen",
+    "width": 1086,
+    "height": 1448,
+    "sourceBytes": 1788657,
+    "sourceSha256": "e0ec6f58bcb8e3febe231e337755ba65f24978d2049ff2a5acb657233a4c3a29"
+  },
+  {
+    "kind": "video",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/Create-the-opening-shot-of-a-snack-shopp.mp4",
+    "stem": "kai-world-video-01",
+    "sourceBytes": 3146544,
+    "outputs": {
+      "desktop": 2208512,
+      "mobile": 1176178
+    },
+    "sourceSha256": "4fffc739456f2d1119f3d17c1fead4544abd08b86bce1eaaf52957d7e22879a4"
+  },
+  {
+    "kind": "video",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/Kai_ Eating.mp4",
+    "stem": "kai-world-video-02",
+    "sourceBytes": 3086929,
+    "outputs": {
+      "desktop": 1467845,
+      "mobile": 649088
+    },
+    "sourceSha256": "a354bea7a9d05f1c83dcb851b6a75598f80cab8ce083145a1725f5b201f7fc71"
+  },
+  {
+    "kind": "video",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/hf_20260911_095353_5d1e394f-a6a3-400e-b7ef-4212b7428fc0.mp4",
+    "stem": "kai-world-video-03",
+    "sourceBytes": 3894726,
+    "outputs": {
+      "desktop": 500573,
+      "mobile": 240627
+    },
+    "sourceSha256": "c2ca51092b3d0375c8d435618d2a4a03511e76809980290cf5c4afb1e0581b3a"
+  },
+  {
+    "kind": "video",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/tomato 4.mp4",
+    "stem": "kai-world-video-04",
+    "sourceBytes": 878851,
+    "outputs": {
+      "desktop": 676165,
+      "mobile": 265597
+    },
+    "sourceSha256": "bc91c4c43886df35d44d3fc9c323779c36dc47f163b3c2e92967208fe48b6c37"
+  },
+  {
+    "kind": "video",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/tomato1_1.mp4",
+    "stem": "kai-world-video-05",
+    "sourceBytes": 3196197,
+    "outputs": {
+      "desktop": 1729535,
+      "mobile": 836673
+    },
+    "sourceSha256": "a2832b6b517f689a18d9fd599743d95477c2d0f83415359c19cb59ee68ba4646"
+  },
+  {
+    "kind": "video",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/tomato３.mp4",
+    "stem": "kai-world-video-06",
+    "sourceBytes": 998437,
+    "outputs": {
+      "desktop": 825981,
+      "mobile": 375209
+    },
+    "sourceSha256": "47d46375025eaa20f8527d8ca3112f290d01ef33263f36c499e2b7b6d66a0559"
+  },
+  {
+    "kind": "video",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/Kai_ 穿搭1.mp4",
+    "stem": "kai-world-outfit",
+    "sourceBytes": 11588702,
+    "outputs": {
+      "desktop": 917910,
+      "mobile": 444388
+    },
+    "sourceSha256": "fa29f60485288304a83596ff3ba9b3a100257ce3232c7d1ac922766e004219a8",
+    "posterWidth": 540,
+    "posterHeight": 960
+  },
+  {
+    "kind": "video",
+    "source": "/Users/koweiwu/Desktop/KAi/網站/AI _ 網頁/Kai_照片機.mp4",
+    "stem": "kai-world-photobooth",
+    "sourceBytes": 11807662,
+    "outputs": {
+      "desktop": 979546,
+      "mobile": 375409
+    },
+    "sourceSha256": "2ede893d4986e7b74df95eb9d0fc67d0a9f2add0860ab80980c6eef5f557279f",
+    "posterWidth": 540,
+    "posterHeight": 960
+  }
+]

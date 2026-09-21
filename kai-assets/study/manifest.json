@@ -1,0 +1,108 @@
+[
+  {
+    "source": "/Users/koweiwu/Desktop/KAi/網站/手.png",
+    "original": "kai-study-01-hands.png",
+    "sha256": "989729e9bb50fe953fbd34a08cc671ed8f827981494330988547802a721ccc3b",
+    "width": 1024,
+    "height": 1536,
+    "desktopHeight": 94,
+    "offset": -1,
+    "mobileWidth": 78,
+    "widths": [
+      480,
+      768,
+      1024
+    ]
+  },
+  {
+    "source": "/Users/koweiwu/Desktop/KAi/網站/側面.png",
+    "original": "kai-study-03-profile.png",
+    "sha256": "8759cf9f0287892174c20bd4eea929f9b267b3bfdd2f142083224baa26a33637",
+    "width": 1024,
+    "height": 1536,
+    "desktopHeight": 80,
+    "offset": 3,
+    "mobileWidth": 74,
+    "widths": [
+      480,
+      768,
+      1024
+    ]
+  },
+  {
+    "source": "/Users/koweiwu/Desktop/KAi/網站/眼睛特寫.png",
+    "original": "kai-study-04-eye.png",
+    "sha256": "3e2f19d07ad58202979b90f2e3479e4c7c338b9421d9b3ce9cf92db3bd75d06a",
+    "width": 1536,
+    "height": 1024,
+    "desktopHeight": 64,
+    "offset": -2,
+    "mobileWidth": 84,
+    "widths": [
+      480,
+      768,
+      1024,
+      1536
+    ]
+  },
+  {
+    "source": "/Users/koweiwu/Desktop/KAi/網站/黑白照.png",
+    "original": "kai-study-05-pose.png",
+    "sha256": "0d842c32954af83adb99d5bd67040299912b6c435ae4f657cf2fa26b71a840b8",
+    "width": 1024,
+    "height": 1536,
+    "desktopHeight": 96,
+    "offset": 0,
+    "mobileWidth": 80,
+    "widths": [
+      480,
+      768,
+      1024
+    ]
+  },
+  {
+    "source": "/Users/koweiwu/Desktop/KAi/網站/手2.png",
+    "original": "kai-study-02-watch.png",
+    "sha256": "68f474d18707a87ca62af31de29b7bbf86cb95298c8ddd3de3a1641bc828fdd3",
+    "width": 1024,
+    "height": 1536,
+    "desktopHeight": 74,
+    "offset": 4,
+    "mobileWidth": 72,
+    "widths": [
+      480,
+      768,
+      1024
+    ]
+  },
+  {
+    "source": "/Users/koweiwu/Desktop/KAi/網站/藝術照.png",
+    "original": "kai-study-06-light.png",
+    "sha256": "dd1889a01ec242f4e292a0e57798fe20c155a9a0c726f28570675e8beee790e9",
+    "width": 1024,
+    "height": 1536,
+    "desktopHeight": 94,
+    "offset": -1,
+    "mobileWidth": 80,
+    "widths": [
+      480,
+      768,
+      1024
+    ]
+  },
+  {
+    "source": "/Users/koweiwu/Desktop/KAi/網站/藝術照2.png",
+    "original": "kai-study-07-motion.png",
+    "sha256": "9c5f513ab3c61afc072bbdfdc829848963cc18b5201ce096fd9c8ded7131ff45",
+    "width": 1024,
+    "height": 1536,
+    "desktopHeight": 98,
+    "offset": 0,
+    "mobileWidth": 82,
+    "widths": [
+      480,
+      768,
+      1024
+    ]
+  }
+]

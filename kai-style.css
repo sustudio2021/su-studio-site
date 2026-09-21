@@ -1,0 +1,216 @@
+html.kai-page { color-scheme: light; background: #dedfdf; scroll-behavior: auto; }
+body.kai-page { --bg: #dedfdf; --fg: #202222; --muted: #575959; background: var(--bg); color: var(--fg); }
+body.kai-page::after { display: none; }
+.kai-page .site-nav { z-index: 10; }
+.kai-page a:focus-visible, .kai-page button:focus-visible, .kai-viewer:focus-visible { outline: 1px solid #333; outline-offset: 6px; }
+.kai-hero { position: relative; isolation: isolate; min-height: 720px; height: 100vh; height: 100svh; padding: 0; overflow: hidden; }
+.kai-back { position: absolute; left: 3vw; top: clamp(40px, 5vw, 64px); z-index: 10; font-size: 10px; }
+.kai-back span { margin-right: 12px; }
+.kai-room { position: absolute; inset: 0; z-index: -3; background: radial-gradient(ellipse at 50% 34%, #f4f4f2 0%, #e3e4e3 37%, #c5c8c9 100%); }
+.kai-room::before { content: ''; position: absolute; inset: 0 22% 29%; background: linear-gradient(90deg, #fff2, transparent 16% 84%, #fff2); border-inline: 1px solid #fff2; }
+.kai-light { position: absolute; width: 56%; height: 20%; top: -11%; left: 22%; border-radius: 50%; background: linear-gradient(100deg, #979c9e, #e5e6e6 30%, #b6babb 70%, #8c9294); border: 9px solid #eef0ef; box-shadow: 0 4px 2px #fff, 0 9px 10px #fff9, inset 0 -5px 6px #fff, 0 20px 90px #fff7; }
+.kai-floor { position: absolute; inset: 70% -15% -20%; border-radius: 50% 50% 0 0 / 8% 8% 0 0; border-top: 2px solid #f5f5f5; background: linear-gradient(100deg, #aeb3b6, #e4e6e7 24%, #bfc4c6 46%, #e8e9e9 68%, #afb5b8); box-shadow: 0 -10px 0 #c2c6c7, 0 -12px 0 #e5e7e7; }
+.kai-floor::after { content: ''; position: absolute; inset: 10% 0 0; background: linear-gradient(#fff0, #d5d8da); }
+.kai-title { position: absolute; z-index: -1; top: 25%; left: 50%; transform: translateX(-50%); width: 62%; max-width: none; margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: clamp(180px, 26vw, 440px); font-weight: 600; line-height: .86; letter-spacing: -.055em; text-align: center; overflow: visible; }
+.kai-index { position: absolute; top: 37%; left: 3vw; font-size: 11px; letter-spacing: .1em; line-height: 1.6; }
+.kai-index p { margin: 28px 0 22px; }
+.kai-index i { display: block; width: 26px; height: 1px; background: #555; }
+.kai-subtitle { position: absolute; z-index: 2; left: 68%; top: 55%; margin: 0; font-size: clamp(12px, 1vw, 16px); line-height: 1.8; letter-spacing: .065em; }
+.kai-stage { position: absolute; inset: 15% 14% 16%; }
+.kai-platform { position: absolute; width: 84%; height: 17%; bottom: -5%; left: 8%; border-radius: 50%; background: linear-gradient(105deg,#b1b5b7,#edf0ef 36%,#c5c9ca 65%,#adb2b5); border: 1px solid #f5f5f5; box-shadow: 0 10px 0 #a0a6a9, 0 13px 0 #e9eded, 0 16px 8px #fff, 0 28px 23px #626b6b45; }
+.kai-platform::before { content: ''; position: absolute; inset: 12% 24%; border: 1px solid #fff; border-radius: 50%; }
+.kai-platform::after { content: ''; position: absolute; inset: -22% -12% -40%; border: 1px solid #60696b66; border-radius: 50%; z-index: -1; }
+.kai-contact-shadow { position: absolute; left: 39%; width: 22%; bottom: 0; height: 4%; background: #30383965; filter: blur(9px); border-radius: 50%; }
+.kai-viewer { position: absolute; inset: 0; width: min(55%, 540px); margin: auto; touch-action: pan-y pinch-zoom; user-select: none; -webkit-user-select: none; cursor: grab; }
+.kai-viewer.is-dragging { cursor: grabbing; }
+.kai-frame { position: absolute; inset: 0; display: block; opacity: 0; transition: opacity 120ms ease; pointer-events: none; }
+.kai-frame.is-visible { opacity: 1; }
+.kai-frame img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block; }
+.kai-controls { position: absolute; bottom: 5.5%; left: 50%; transform: translateX(-50%); text-align: center; }
+.kai-controls[hidden] { display: none; }
+.kai-control-row { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.kai-control-row button { width: 44px; height: 44px; background: transparent; border: 0; font: inherit; color: #424646; cursor: pointer; }
+.kai-controls p { font-size: 9px; letter-spacing: .13em; margin: 6px 0 0; }
+.kai-mobile-hint { display: none; }
+.kai-signature, .kai-copyright { position: absolute; bottom: 4%; font-size: 9px; letter-spacing: .09em; }
+.kai-signature { right: 3vw; }.kai-copyright { left: 3vw; }
+.kai-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 1000px) {
+  .kai-hero { min-height: 760px; }
+  .kai-title { top: 31%; width: 78%; font-size: 31vw; }
+  .kai-stage { inset: 20% 6% 20%; }
+  .kai-subtitle { left: auto; right: 5%; top: 66%; font-size: 11px; }
+  .kai-index { top: 24%; left: 5%; }
+  .kai-light { width: 76%; left: 12%; }
+  .kai-signature { display: none; }
+}
+@media (max-width: 600px) {
+  .kai-hero { min-height: 760px; }
+  .kai-back { left: 20px; top: 76px; font-size: 9px; }
+  .kai-index { top: 125px; left: 20px; right: 20px; display: flex; justify-content: space-between; font-size: 9px; }
+  .kai-index p { margin: 0; text-align: right; }.kai-index p br { display: none; }.kai-index i { display: none; }
+  .kai-title { top: 27%; font-size: 40vw; width: 95%; }
+  .kai-stage { inset: 23% 0 23%; }
+  .kai-viewer { width: 78%; }
+  .kai-platform { width: 82%; left: 9%; height: 12%; bottom: -3%; }
+  .kai-platform::after { inset: -25% -7% -40%; }
+  .kai-light { top: -4%; height: 6%; left: 9%; width: 82%; border-width: 4px; opacity: .7; }
+  .kai-room::before { inset: 0 10% 28%; }
+  .kai-floor { top: 71%; }
+  .kai-subtitle { top: auto; bottom: 13.5%; left: 0; right: 0; text-align: center; font-size: 11px; line-height: 1.65; }
+  .kai-subtitle br { display: none; }.kai-subtitle br::after { content: ' '; }
+  .kai-controls { bottom: 4.8%; width: 200px; }.kai-control-row svg { width: 13px; height: 22px; }
+  .kai-desktop-hint { display: none; }.kai-mobile-hint { display: inline; }
+  .kai-copyright { bottom: 15px; left: 20px; font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kai-page *, .kai-page *::before, .kai-page *::after { transition: none !important; animation: none !important; }
+}
+/* A wide editorial wordmark leaves a clear lower edge for the project credit. */
+@media (min-width: 1001px) {
+  .kai-title { top: 28%; font-size: clamp(180px, 22vw, 370px); transform: translateX(-50%) scaleX(1.4); }
+  .kai-subtitle { top: 56%; }
+}
+.kai-contact-shadow { left: 43%; width: 14%; bottom: 3%; height: 2%; filter: blur(5px); }
+
+.kai-hero-cursor {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  pointer-events: none;
+  font-family: var(--font-en);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .14em;
+  white-space: nowrap;
+  color: white;
+  mix-blend-mode: difference;
+}
+@media (hover: hover) and (pointer: fine) {
+  .kai-hero-cursor.is-visible { display: block; }
+  .kai-viewer.has-drag-cursor { cursor: none; }
+}
+
+/* Two tight sole contacts replace the detached, shared oval shadow.
+   Coordinates follow the 1024 × 1536 character canvases at each angle. */
+.kai-contact-shadow { display: none; }
+.kai-frame::before, .kai-frame::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: calc(var(--character-width) * .135);
+  height: calc(var(--character-height) * .009);
+  left: calc(50% - var(--character-width) * .078);
+  bottom: calc(var(--character-height) * .057);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(25, 29, 30, .72) 0%, rgba(35, 40, 42, .45) 45%, transparent 75%);
+  filter: blur(1px);
+  box-shadow: 0 2px 5px rgba(40, 45, 47, .19);
+}
+.kai-frame::after {
+  left: calc(50% + var(--character-width) * .096);
+  bottom: calc(var(--character-height) * .045);
+}
+.kai-frame[data-view="side"]::before {
+  left: calc(50% - var(--character-width) * .014);
+  bottom: calc(var(--character-height) * .059);
+  width: calc(var(--character-width) * .225);
+}
+.kai-frame[data-view="side"]::after { display: none; }
+.kai-frame[data-view="back"]::before {
+  left: calc(50% - var(--character-width) * .08);
+  bottom: calc(var(--character-height) * .058);
+}
+.kai-frame[data-view="back"]::after {
+  left: calc(50% + var(--character-width) * .08);
+  bottom: calc(var(--character-height) * .054);
+}
+
+.kai-frame { isolation: isolate; }
+.kai-frame::before, .kai-frame::after { z-index: 0; }
+.kai-frame img { position: relative; z-index: 1; }
+.kai-frame::before { bottom: calc(var(--character-height) * .052); }
+.kai-frame::after { bottom: calc(var(--character-height) * .040); }
+.kai-frame[data-view="side"]::before { bottom: calc(var(--character-height) * .054); }
+.kai-frame[data-view="back"]::before { bottom: calc(var(--character-height) * .053); }
+.kai-frame[data-view="back"]::after { bottom: calc(var(--character-height) * .049); }
+
+/* 03 — KAI'S WORLD: fixed editorial composition, isolated from 01 and 02. */
+.kai-world { padding: clamp(100px, 12vh, 180px) 0 clamp(110px, 13vh, 180px); background: #dedfdf; color: #292c2c; }
+.kai-world-heading { display: flex; align-items: baseline; gap: clamp(36px, 5vw, 80px); margin: 0 clamp(20px, 3vw, 60px) 56px; font-size: 10px; font-weight: 400; letter-spacing: .15em; line-height: 1.4; }
+.kai-world-heading h2 { margin: 0; font: inherit; }
+.kai-world-canvas { position: relative; width: min(94%, 1440px); height: min(82vw, 1255px); margin: 0 auto; }
+.kai-world-media { position: absolute; left: var(--world-x); top: var(--world-y); width: var(--world-w); margin: 0; z-index: 1; transform: translate(var(--world-shift-x, 0px), var(--world-shift-y, 0px)); }
+.kai-world-media:focus-within { z-index: 5; }
+.kai-world-surface { display: block; width: 100%; padding: 0; border: 0; border-radius: clamp(14px, 1.5vw, 22px); overflow: hidden; background: transparent; color: inherit; line-height: 0; position: relative; transform: scale(1); transition: transform 300ms ease; }
+button.kai-world-surface { cursor: pointer; }
+.kai-world-surface picture { display: block; }
+.kai-world-surface img { display: block; width: 100%; height: auto; }
+.kai-world-surface video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; transition: opacity 160ms ease; }
+.kai-world-surface[data-playing="true"] video { opacity: 1; }
+.kai-world-surface:focus-visible { outline: 1px solid #292c2c; outline-offset: 6px; }
+@media (hover: hover) and (pointer: fine) and (min-width: 901px) {
+  .kai-world-media:hover { z-index: 6; }
+  .kai-world-photo:hover .kai-world-surface { transform: scale(1.04); }
+  .kai-world-video:hover .kai-world-surface { transform: scale(1.06); }
+}
+@media (max-width: 900px) {
+  .kai-world { padding-top: 110px; padding-bottom: 140px; }
+  .kai-world-heading { margin: 0 20px 62px; justify-content: space-between; font-size: 9px; gap: 20px; }
+  .kai-world-canvas { display: flex; flex-direction: column; gap: clamp(42px, 12vw, 92px); width: 100%; height: auto; }
+  .kai-world-media { position: relative; left: auto; top: auto; width: var(--world-mobile-w); margin-left: var(--world-mobile-left); transform: none; }
+  .kai-world-media:nth-child(3n) { margin-top: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kai-world-media { transform: none !important; }
+  .kai-world-surface, .kai-world-media:hover .kai-world-surface { transform: none; transition: none; }
+  .kai-world-surface video { transition: none; }
+}
+
+@media (max-width: 900px) {
+  .kai-world-video { max-width: calc(78svh * .5625); }
+}
+
+/* Compact preview: reveal the supporting films only on request. */
+.kai-world-more { display: none; }
+@media (max-width: 900px) {
+  .kai-world.has-more:not(.is-expanded) .kai-world-media:not(.kai-world-featured) { display: none; }
+  .kai-world.has-more:not(.is-expanded) .kai-world-more { display: block; margin: 48px auto 0; padding: 12px 30px; border: 1px solid currentColor; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: 12px; letter-spacing: .08em; cursor: pointer; }
+  .kai-world-more:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+}
+
+/* 04 — typography-only closing chapter. */
+.kai-about { padding: clamp(110px, 14vw, 220px) clamp(20px, 5vw, 80px) 36px; background: #dedfdf; color: #292c2c; }
+.kai-about-heading { display: flex; align-items: baseline; gap: clamp(36px, 5vw, 80px); margin-bottom: clamp(64px, 8vw, 120px); font-size: 10px; letter-spacing: .15em; line-height: 1.4; }
+.kai-about-heading h2 { margin: 0; font: inherit; }
+.kai-about-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(180px, .7fr); gap: clamp(60px, 10vw, 160px); max-width: 1280px; }
+.kai-about-lead { margin: 0 0 48px; font-size: clamp(32px, 4.2vw, 62px); font-weight: 400; letter-spacing: -.035em; line-height: 1.12; }
+.kai-about-english { max-width: 35em; margin: 0 0 24px; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.6; letter-spacing: -.015em; }
+.kai-about-chinese { max-width: 40em; margin-top: 48px; color: #656868; font-size: 14px; line-height: 1.95; letter-spacing: .035em; }
+.kai-about-chinese p { margin: 0 0 18px; }
+.kai-about-scope { padding-top: 8px; }
+.kai-about-scope h3 { margin: 0 0 32px; font-size: 10px; font-weight: 400; letter-spacing: .15em; }
+.kai-about-scope ul { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2.25; }
+.kai-about-contact { display: inline-block; margin-top: 80px; color: inherit; text-decoration: none; font-size: 15px; letter-spacing: .07em; padding-bottom: 8px; border-bottom: 1px solid currentColor; }
+.kai-about-contact:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+.kai-about-footer { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-top: clamp(100px, 14vw, 200px); padding-top: 24px; border-top: 1px solid #b9bbbb; font-size: 10px; letter-spacing: .1em; }
+@media (max-width: 700px) {
+  .kai-about { padding-top: 100px; padding-bottom: 28px; }
+  .kai-about-heading { justify-content: space-between; gap: 20px; font-size: 9px; }
+  .kai-about-layout { grid-template-columns: minmax(0, 1fr); gap: 64px; }
+  .kai-about-lead { margin-bottom: 36px; }
+  .kai-about-chinese { font-size: 13px; margin-top: 36px; }
+  .kai-about-contact { margin-top: 48px; }
+  .kai-about-footer { margin-top: 100px; letter-spacing: .04em; }
+}
+
+/* Quiet editorial note within the existing World composition. */
+.kai-world-note { position: absolute; left: 65%; top: 0; width: clamp(220px, 19vw, 280px); color: #454848; font-size: 11px; font-weight: 400; line-height: 1.8; letter-spacing: .015em; }
+.kai-world-note p { margin: 0; }
+.kai-world-note .kai-world-note-title { margin-bottom: 12px; color: #292c2c; font-size: 10px; letter-spacing: .1em; line-height: 1.5; }
+@media (max-width: 900px) {
+  .kai-world-note { position: static; order: -1; width: min(280px, calc(100% - 40px)); margin: 0 20px 16px; font-size: 12px; }
+}

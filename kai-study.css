@@ -1,0 +1,92 @@
+/* Character Study is isolated from the existing Hero and site navigation. */
+.kai-study {
+  position: relative;
+  height: 80vh;
+  height: 80svh;
+  min-height: 540px;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 30px;
+  padding: 48px 0 52px;
+  background: #dedfdf;
+  color: #292c2c;
+}
+.kai-study-heading {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(36px, 5vw, 80px);
+  margin: 0 clamp(20px, 3vw, 60px);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .15em;
+  line-height: 1.4;
+}
+.kai-study-heading h2 { margin: 0; font: inherit; }
+.kai-study-gallery {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3.2vw, 60px);
+  padding: 14px clamp(20px, 3vw, 60px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  touch-action: pan-x pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.kai-study-gallery::-webkit-scrollbar { display: none; }
+.kai-study-gallery:focus-visible { outline: 1px solid #727777; outline-offset: -4px; }
+.kai-study-gallery.is-dragging { cursor: grabbing; }
+.kai-study-image {
+  display: block;
+  flex: 0 0 auto;
+  height: var(--study-height);
+  width: auto;
+  transform: translateY(var(--study-offset));
+}
+.kai-study-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  pointer-events: none;
+}
+.kai-study-cursor {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  pointer-events: none;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .14em;
+  white-space: nowrap;
+  color: white;
+  mix-blend-mode: difference;
+}
+@media (hover: hover) and (pointer: fine) {
+  .kai-study.has-drag-cursor .kai-study-gallery { cursor: none; }
+  .kai-study.has-drag-cursor .kai-study-cursor { display: block; }
+}
+@media (max-width: 600px) {
+  .kai-study { min-height: calc(123vw + 150px); padding: 34px 0 38px; gap: 24px; }
+  .kai-study-heading { margin-inline: 20px; justify-content: space-between; gap: 20px; font-size: 9px; }
+  .kai-study-gallery { padding-inline: 20px; gap: 20px; }
+  .kai-study-image { height: auto; width: 78vw; }
+  .kai-study-profile { width: 74vw; }
+  .kai-study-eye { width: 84vw; }
+  .kai-study-pose, .kai-study-light { width: 80vw; }
+  .kai-study-watch { width: 72vw; }
+  .kai-study-motion { width: 82vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kai-study-gallery { scroll-behavior: auto; }
+}

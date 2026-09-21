@@ -1089,6 +1089,34 @@
           display: none;
         }
       }
+
+      /* Homepage featured project — isolated from existing sections. */
+      .home-kai { background: #151718; color: #e4e6e2; color-scheme: dark; padding: 0; }
+      .home-kai-layout { position: relative; isolation: isolate; display: grid; grid-template-columns: 7fr 3fr; grid-template-rows: 1fr 1fr; grid-template-areas: "heading image" "copy image"; min-height: 450px; width: 100%; margin: 0; }
+      .home-kai-heading { position: relative; z-index: 1; grid-area: heading; align-self: end; padding: 32px clamp(22px, 6vw, 88px) 0; }
+      .home-kai-label { margin: 0 0 22px; font-size: 11px; letter-spacing: .14em; }
+      .home-kai h2 { width: fit-content; margin: 0; font-size: clamp(72px, 7vw, 100px); font-weight: 400; line-height: .95; letter-spacing: -.055em; color: #cbd0ce; }
+      @supports (background-clip: text) or (-webkit-background-clip: text) {
+        .home-kai h2 { background: linear-gradient(110deg, #929d99 35%, #c5d0cc 43%, #fff 49%, #fff 52%, #c5d0cc 58%, #929d99 66%); background-size: 300% 100%; background-position: 100% 0; -webkit-background-clip: text; background-clip: text; color: transparent; animation: home-kai-glint 3.6s linear infinite; }
+      }
+      @keyframes home-kai-glint { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+      .home-kai-type { margin: 18px 0 0; font-size: 12px; letter-spacing: .15em; }
+      .home-kai-copy { position: relative; z-index: 1; grid-area: copy; align-self: start; padding: 24px clamp(22px, 6vw, 88px) 32px; }
+      .home-kai-description { max-width: 430px; margin: 0; font-size: 14px; line-height: 2; color: #a8adad; }
+      .home-kai-cta { display: inline-block; margin-top: 24px; padding-bottom: 8px; color: inherit; font-size: 12px; letter-spacing: .12em; text-decoration: none; border-bottom: 1px solid currentColor; }
+      .home-kai-image { display: block; position: absolute; inset: 0; z-index: 0; overflow: hidden; color: inherit; }
+      .home-kai-image picture { display: block; position: absolute; inset: 0; }
+      .home-kai-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
+      .home-kai a:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
+      @media (max-width: 700px) {
+        .home-kai-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "heading" "image" "copy"; }
+        .home-kai-heading { padding-top: 40px; padding-bottom: 32px; }
+        .home-kai-image { position: relative; inset: auto; grid-area: image; height: 360px; }
+          .home-kai-copy { padding-top: 28px; padding-bottom: 40px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .home-kai h2 { animation: none; background: none; color: #e4e6e2; }
+      }
     </style>
   </head>
   <body id="top">
@@ -1172,6 +1200,25 @@
             <span>Podcast ｜ 人物訪談 ｜ 聲音內容 ｜ 文化藝術專案</span>
             <span>行動式 Podcast ｜ 人物故事紀錄</span>
           </p>
+        </div>
+      </section>
+
+      <section class="home-kai" aria-labelledby="home-kai-title">
+        <div class="home-kai-layout">
+          <header class="home-kai-heading">
+            <p class="home-kai-label">FEATURED PROJECT / 2026</p>
+            <h2 id="home-kai-title">KAI</h2>
+            <p class="home-kai-type">AI CHARACTER PROJECT</p>
+          </header>
+          <a class="home-kai-image" href="/kai" aria-label="Kai — AI Character Project by SU STUDIO">
+            <picture>
+              <img src="kai-assets/kai-home-background.jpg" width="1920" height="716" loading="lazy" decoding="async" alt="Kai, SU STUDIO’s AI character, in a side portrait against a dark background" />
+            </picture>
+          </a>
+          <div class="home-kai-copy">
+            <p class="home-kai-description" lang="zh-Hant">KAI 是 SU STUDIO 持續進行中的 AI 角色實驗，從人物設定、AI 影像與動態影片到聲音，探索一個虛擬角色如何建立一致且可持續發展的視覺身份。</p>
+            <a class="home-kai-cta" href="/kai">VIEW PROJECT <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </section>
     </main>

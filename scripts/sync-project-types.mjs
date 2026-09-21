@@ -105,9 +105,10 @@ work = work.replace(
   (card, categories) => {
     if (!/\b(?:youtube|shorts|podcast|project)\b/.test(categories)) return card;
 
+    const label = card.includes('href="kai.html"') ? "AI CHARACTER PROJECT" : workCategoryLabel(categories);
     return card.replace(
       /<span class="category">[\s\S]*?<\/span>/,
-      `<span class="category">${escapeHtml(workCategoryLabel(categories))}</span>`,
+      `<span class="category">${escapeHtml(label)}</span>`,
     );
   },
 );
