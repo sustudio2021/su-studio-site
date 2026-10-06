@@ -23,6 +23,12 @@ const missing = [];
 
 for (const file of htmlFiles) {
   const html = readFileSync(join(root, file), "utf8");
+  if (!html.trim() || !/<html\b/i.test(html) || !/<body\b/i.test(html) || !/<\/html>/i.test(html)) {
+    missing.push(`${file} -> empty or incomplete HTML document`);
+  }
+  if (/^archive-/.test(file) && (!/<h1\b/i.test(html) || !/class="archive-section"/.test(html))) {
+    missing.push(`${file} -> missing archive heading or content`);
+  }
   const matches = html.matchAll(/\b(?:href|src)=["']([^"']+)["']/g);
 
   for (const match of matches) {
@@ -56,7 +62,7 @@ for (const file of localTargets) {
 }
 
 if (missing.length > 0) {
-  console.error("Missing local references:");
+  console.error("Site validation failed:");
   for (const item of missing) console.error(`- ${item}`);
   process.exit(1);
 }
