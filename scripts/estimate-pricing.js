@@ -50,11 +50,11 @@ export function calculate(s) {
     if(custom)notes.push(`自填成品長度：${requested}${edit==='short'?'秒':'分鐘'}${i>=0?`，依${p.durations[i]}${edit==='short'?'秒':'分鐘'}內級距估算`:''}。`);
     if(edit==='youtube')notes.push(`${YOUTUBE_PLANS[s.tier].name}：${YOUTUBE_PLANS[s.tier].features.join('、')}。`);
     if(edit==='event')notes.push('活動精華為基本剪輯；大量特效、動畫、合成另報。');
-    if(edit!=='youtube')notes.push(`標準原始素材 ${p.rawLimit} 分鐘內；不確定素材量可先聯繫確認，超量人工報價。`);
-    else notes.push('原始素材量為選填，不影響目前級距價格；超量或複雜素材由工作室確認。');
-    if(edit==='youtube'&&s.raw&&s.raw!=='unknown')notes.push(`原始素材量（客戶預估）：${{under30:'30分鐘內',under60:'30～60分鐘',over60:'超過60分鐘'}[s.raw]||'待確認'}。`);
-    if(s.raw==='over')manual.push('原始素材超出標準量，剪輯費需人工確認');
-    if(s.raw==='unknown')pending.push('原始素材量待確認');
+    if(!bundled&&edit!=='youtube')notes.push(`標準原始素材 ${p.rawLimit} 分鐘內；不確定素材量可先聯繫確認，超量人工報價。`);
+    else if(!bundled)notes.push('原始素材量為選填，不影響目前級距價格；超量或複雜素材由工作室確認。');
+    if(!bundled&&edit==='youtube'&&s.raw&&s.raw!=='unknown')notes.push(`原始素材量（客戶預估）：${{under30:'30分鐘內',under60:'30～60分鐘',over60:'超過60分鐘'}[s.raw]||'待確認'}。`);
+    if(!bundled&&s.raw==='over')manual.push('原始素材超出標準量，剪輯費需人工確認');
+    if(!bundled&&s.raw==='unknown')pending.push('原始素材量待確認');
   }
   if(edit==='podcast'){
     const p=PRICING.podcast; const video=s.podcastType!=='audio';
@@ -89,7 +89,7 @@ export function summary(s,r){
  const details=[];
  if(edit==='youtube'&&Number(s.quantity)>=3&&['6','12'].includes(s.partnership))details.push(`長期合作洽詢意向：${s.partnership}個月；需每月固定3支以上，剪輯費95折，依正式合約確認。此次估算未套用折扣；合約總額50%訂金，尾款於合約期滿結案後支付；未達約定支數依原價計算。`);
  if(shooting){details.push(`拍攝地區：${regions[s.travel]||'待確認'}`);if(s.shootExtra){details.push('有拍攝特殊需求（另行報價）');if(s.specialRequest?.trim())details.push(`拍攝特殊需求：${s.specialRequest.trim()}`);}}
- if(['youtube','short','event'].includes(edit)){details.push(`成品數量：${s.quantity??1} 支（相同規格）`);const value=edit==='youtube'?s.rawYoutube:s.raw;details.push(`原始素材量：${raw[value]||'待確認'}`);}
+ if(['youtube','short','event'].includes(edit)){details.push(`成品數量：${s.quantity??1} 支（相同規格）`);const value=edit==='youtube'?s.rawYoutube:s.raw;if(!shooting)details.push(`原始素材量：${raw[value]||'待確認'}`);}
  if(edit==='podcast'){
  details.push(`每集錄製 ${s.recording} 分鐘；後製 ${s.episodes} 集`);
  if(s.podcastType==='audio')details.push(`每集額外音軌：${s.extras} 個`);

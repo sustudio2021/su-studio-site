@@ -60,3 +60,11 @@ for(const [service,duration] of [['youtube',5],['short',30],['event',3]]){
  assert.equal(r.total,0);assert.ok(r.needsQuote);assert.match(r.manual.join(''),/超過30支/);
 }
 const bulkBundle=calculate({...base,service:'bundle',edit:'event',quantity:31});assert.equal(bulkBundle.total,7000);assert.match(bulkBundle.manual.join(''),/超過30支/);
+for(const edit of ['youtube','short','event']){
+ const duration={youtube:5,short:30,event:3}[edit];
+ for(const raw of ['unknown','over']){
+  const s={...base,service:'bundle',edit,duration,raw,rawYoutube:raw};const r=calculate(s);
+  assert.equal(r.pending.length,0);assert.equal(r.manual.length,0);
+  assert.doesNotMatch(summary(s,r),/原始素材量|標準原始素材/);
+ }
+}
