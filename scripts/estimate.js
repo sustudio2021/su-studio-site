@@ -1,8 +1,8 @@
 import { PRICING, YOUTUBE_PLANS, SERVICES, calculate, summary } from './estimate-pricing.js';
 const form=document.querySelector('#estimate-form'), fields=document.querySelector('#fields');
-const state={product:'youtube',production:'editOnly',service:'youtube',shootKind:'general',hours:4,travel:'taichung',edit:'youtube',partnership:'none',quantity:1,duration:5,customDuration:5,rawYoutube:'unknown',tier:'basic',raw:'unknown',podcastType:'audio',recording:60,episodes:1,extras:0,subtitle:'none',finished:60,effects:false,shootExtra:false,specialRequest:''};
+const state={product:'youtube',production:'editOnly',service:'youtube',shootKind:'general',overtimeMinutes:0,hours:4,travel:'taichung',edit:'youtube',partnership:'none',quantity:1,duration:5,customDuration:5,rawYoutube:'unknown',tier:'basic',raw:'unknown',podcastType:'audio',recording:60,episodes:1,extras:0,subtitle:'none',finished:60,effects:false,shootExtra:false,specialRequest:''};
 const money=n=>`NT$${n.toLocaleString('zh-TW')}`;
-const select=(name,label,options)=>`<label class="field"><span>${label}</span><select name="${name}">${options.map(([v,t])=>`<option value="${v}" ${String(state[name])===String(v)?'selected':''}>${t}</option>`).join('')}</select></label>`;
+const select=(name,label,options)=>`<label class="field"><span>${label}</span><select name="${name}">${options.map(([v,t])=>`<option value="${v}" ${String(state[name]??(name==='bundleKind'?state.shootKind:''))===String(v)?'selected':''}>${t}</option>`).join('')}</select></label>`;
 const number=(name,label,min,max)=>`<label class="field"><span>${label}</span><input name="${name}" type="number" min="${min}" max="${max}" step="1" value="${state[name]}" required></label>`;
 const isShoot=()=>['shoot','podcastShoot','bundle'].includes(state.service);
 const edit=()=>state.service==='bundle'?state.edit:state.service;
@@ -10,7 +10,7 @@ function resetDuration(){const p=PRICING[edit()];if(p?.durations)state.duration=
 const products=[['youtube','YouTube 影片','長篇內容、訪談與頻道影片'],['short','短影音','社群短片與直式內容'],['podcast','Podcast','聲音節目與 Video Podcast'],['event','活動精華','濃縮現場，留下精彩片段'],['shootOnly','只需要拍攝','已有後製安排，交付拍攝原始檔']];
 function syncService(){
  state.edit=state.product;
- state.shootKind=state.product==='podcast'?'podcast':'general';
+ state.shootKind=state.bundleKind||(state.product==='podcast'?'podcast':'general');
  if(state.product==='shootOnly')state.shootKind=state.shootKindOnly||'general';
  state.service=state.product==='shootOnly'?(state.shootKindOnly==='podcast'?'podcastShoot':'shoot'):state.production==='withShoot'?'bundle':state.product;
 }
@@ -21,15 +21,19 @@ function renderFields(){let html='';
  const effectsLabel=form.elements.effects.closest('label');effectsLabel.hidden=state.product==='shootOnly';form.elements.effects.disabled=state.product==='shootOnly';
  if(state.product!=='shootOnly'){
  html+=select('production','這次需要搭配拍攝嗎？',[['editOnly','我有素材，只需要剪輯／後製'],['withShoot','需要 SU STUDIO 拍攝＋剪輯／後製']]);
- if(state.service==='bundle')html+='<p class="help">'+(state.product==='podcast'?'搭配 Podcast 雙人雙機拍攝。':'搭配一般單機拍攝。')+'使用搭配剪輯推廣拍攝價，剪輯費另列於明細。拍攝以一次方案計算，後製依選擇的件數／集數計算。</p>';
+ if(state.service==='bundle'){
+ html+=select('bundleKind','拍攝配置',[['general','單人單機'],['dual','雙人雙機'],['podcast','Podcast 雙人雙機＋基本收音']]);
+ html+='<p class="help">拍攝費與剪輯費分開列示；雙人雙機8小時搭配剪輯優惠拍攝價為NT$18,000，僅限同時委託拍攝與剪輯，剪輯費另計；4小時搭配剪輯推廣價待確認。</p>';
+ }
  }else{
- html+=select('shootKindOnly','拍攝類型',[['general','一般單機拍攝'],['dual','雙人雙機拍攝（另行報價）'],['podcast','Podcast 雙人雙機拍攝']]);
+ html+=select('shootKindOnly','拍攝類型',[['general','單人單機'],['dual','雙人雙機'],['podcast','Podcast 雙人雙機＋基本收音']]);
  html+='<p class="help">純拍攝交付拍攝原始檔，依純拍攝費率估算。</p>';
  }
  if(isShoot()){
- html+=select('hours','拍攝時數',[[4,'4 小時'],[8,'8 小時']]);
+ html+=select('hours','基本拍攝方案',[[4,'4 小時'],[8,'8 小時']]);
+ html+=number('overtimeMinutes','預計超過方案的時間（分鐘，無超時填0）',0,10000)+'<p class="help">不足1小時以1小時計費，不提供半小時計費。時間包含架設、測試、拍攝與撤場，超時費不適用推廣折扣。</p>';
  html+=select('travel','拍攝地區（車馬費）',[['taichung','台中市區｜免車馬費'],['near','苗栗／彰化／雲林｜NT$1,500'],['middle','新竹／桃園／嘉義｜NT$2,000'],['far','台北／台南｜NT$2,500'],['other','其他地區、遠程或例外｜人工確認']]);
- html+='<label class="check"><input type="checkbox" name="shootExtra" '+(state.shootExtra?'checked':'')+'>預計超時、加機位或深夜拍攝等特殊需求</label><p class="help">以上特殊需求另行報價；超時費率見估算提醒，進位方式待確認。</p>';
+ html+='<label class="check"><input type="checkbox" name="shootExtra" '+(state.shootExtra?'checked':'')+'>加機位、深夜拍攝或其他特殊需求</label><p class="help">特殊需求另行報價；一般超時請填寫上方分鐘數，系統會自動估算。</p>';
  }
  if(isShoot()&&state.shootExtra)html+='<label class="field"><span>特殊需求說明（選填）</span><textarea name="specialRequest" rows="3" maxlength="1000" placeholder="例如：預計延長拍攝1小時、希望增加機位，或其他拍攝需求"></textarea></label>';
  const e=edit();
@@ -78,8 +82,8 @@ function renderResult(){const target=document.querySelector('#result');
 form.addEventListener('submit',event=>event.preventDefault());
 form.addEventListener('change',event=>{const t=event.target;if(!t.name)return;state[t.name]=t.type==='checkbox'?t.checked:t.type==='number'?Number(t.value):t.value;
  if(t.name==='hours')state.hours=Number(t.value);
- if(['product','production','shootKindOnly'].includes(t.name)){syncService();if(t.name==='product'){state.partnership='none';state.production='editOnly';state.shootExtra=false;state.specialRequest='';state.effects=false;state.quantity=1;state.podcastType='audio';state.finished=60;state.customDuration=5;state.shootKindOnly='general';state.episodes=1;state.recording=60;state.extras=0;state.subtitle='none';state.raw='unknown';state.rawYoutube='unknown';state.hours=4;state.travel='taichung';state.tier='basic';syncService();resetDuration();form.elements.effects.checked=false;document.querySelector('#selection-status').textContent='已切換內容類型，製作方式、數量與加購選項已重設，請重新確認需求。';}}
- if(['product','production','shootKindOnly','podcastType','subtitle','duration','shootExtra'].includes(t.name))renderFields();
+ if(['product','production','shootKindOnly','bundleKind'].includes(t.name)){syncService();if(t.name==='product'){state.bundleKind=state.product==='podcast'?'podcast':'general';state.overtimeMinutes=0;state.partnership='none';state.production='editOnly';state.shootExtra=false;state.specialRequest='';state.effects=false;state.quantity=1;state.podcastType='audio';state.finished=60;state.customDuration=5;state.shootKindOnly='general';state.episodes=1;state.recording=60;state.extras=0;state.subtitle='none';state.raw='unknown';state.rawYoutube='unknown';state.hours=4;state.travel='taichung';state.tier='basic';syncService();resetDuration();form.elements.effects.checked=false;document.querySelector('#selection-status').textContent='已切換內容類型，製作方式、數量與加購選項已重設，請重新確認需求。';}}
+ if(['product','production','shootKindOnly','bundleKind','podcastType','subtitle','duration','shootExtra'].includes(t.name))renderFields();
  if(t.name==='tier'){for(const radio of fields.querySelectorAll('[name=tier]'))radio.closest('label').querySelector('b').textContent=radio.checked?'已選擇':'選擇此方案';}
  renderResult();
 });

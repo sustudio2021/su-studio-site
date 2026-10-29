@@ -131,3 +131,8 @@ body{isolation:isolate;background:
 .plan>span{display:flex;flex-direction:column}
 .plan>span>.plan-features{flex:1}
 .plan>span>b{margin-top:auto}
+/* Center both estimate contact actions consistently. */
+#copy{justify-content:center;text-align:center}
+#line{text-align:center}
+
+#copy,#line{display:flex;align-items:center;justify-content:center;text-align:center}

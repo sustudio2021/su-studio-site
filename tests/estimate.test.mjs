@@ -68,4 +68,27 @@ for(const edit of ['youtube','short','event']){
   assert.doesNotMatch(summary(s,r),/原始素材量|標準原始素材/);
  }
 }
-const dual=calculate({...base,service:'shoot',shootKind:'dual'});assert.equal(dual.total,0);assert.ok(dual.needsQuote);assert.match(dual.manual.join(''),/雙人雙機/);
+const dual=calculate({...base,service:'shoot',shootKind:'dual'});assert.equal(dual.total,12000);assert.equal(dual.needsQuote,false);
+
+for(const [kind,basePrice,rate] of [['general',8000,2000],['dual',12000,3000],['podcast',15000,3500]]){
+ for(const minutes of [30,60,90,120]){
+  const result=calculate({...base,service:'shoot',shootKind:kind,overtimeMinutes:minutes});
+  assert.equal(result.total,basePrice+Math.ceil(minutes/60)*rate);
+  assert.equal(result.lines.find(l=>l.label.startsWith('拍攝超時')).amount,Math.ceil(minutes/60)*rate);
+ }
+}
+for(const hours of [4,8])for(const kind of ['general','podcast']){
+ const s={...base,service:'bundle',shootKind:kind,hours,overtimeMinutes:90};
+ assert.equal(calculate(s).total-calculate({...s,overtimeMinutes:0}).total,PRICING.shoot[kind].overtime*2);
+}
+for(const s of [{service:'bundle',hours:4}]){
+ const r=calculate({...base,shootKind:'dual',...s});assert.match(r.manual.join(''),/待確認/);
+}
+console.log('All 12 shooting overtime examples, 4/8h rates and unset dual prices passed.');
+
+check({service:'shoot',shootKind:'dual',hours:8},21000);
+check({service:'bundle',shootKind:'dual',hours:8,edit:'event',duration:3},23000);
+for(const [minutes,extra] of [[30,3000],[60,3000],[90,6000],[120,6000]]){
+ check({service:'shoot',shootKind:'dual',hours:8,overtimeMinutes:minutes},21000+extra);
+ check({service:'bundle',shootKind:'dual',hours:8,edit:'event',duration:3,overtimeMinutes:minutes},23000+extra);
+}

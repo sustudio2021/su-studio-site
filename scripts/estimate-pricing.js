@@ -1,6 +1,6 @@
 // All published rates live here. Unconfirmed rules must stay manual.
 export const PRICING = {
-  shoot: { general: { regular: [8000,14000], bundle: [7000,12000], overtime:2000 }, podcast: { regular:[15000,27000], bundle:[12000,23000], overtime:3500 } },
+  shoot: { dual:{regular:[12000,21000],bundle:[null,18000],overtime:3000}, general: { regular: [8000,14000], bundle: [7000,12000], overtime:2000 }, podcast: { regular:[15000,27000], bundle:[12000,23000], overtime:3500 } },
   youtube:{ durations:[5,10,15,20,30], basic:[6300,7500,8500,9500,10500], pro:[7300,8500,9500,10500,11500] },
   short:{ durations:[30,60,90], prices:[2000,2500,3000], rawLimit:15 },
   event:{ durations:[3,5,10], bundle:[5000,6000,8000], own:[6500,8000,10500], rawLimit:30 },
@@ -22,13 +22,19 @@ export function calculate(s) {
   const edit=bundled?s.edit:s.service;
   const integer=(v,min,max)=>Number.isInteger(Number(v))&&Number(v)>=min&&Number(v)<=max;
   if(shooting){
-    const kind=s.service==='podcastShoot'?'podcast':s.shootKind==='dual'?'dual':bundled?s.shootKind:'general';
+    const kind=s.service==='podcastShoot'?'podcast':s.shootKind||'general';
     const p=PRICING.shoot[kind];
-    if((!p&&kind!=='dual')||![4,8].includes(Number(s.hours)))throw Error('請選擇拍攝方案');
-    if(kind==='dual')manual.push(`雙人雙機拍攝 ${s.hours} 小時，拍攝費及超時費另行報價`);
-    else {add(`${kind==='podcast'?'Podcast 雙人雙機':'一般單機'}拍攝 ${s.hours} 小時${bundled?'（搭配剪輯推廣價）':''}`,p[bundled?'bundle':'regular'][s.hours===8?1:0]);
-    notes.push(`超時費 NT$${p.overtime.toLocaleString()}/小時；進位方式另行確認。`);}
-    if(s.shootExtra)manual.push('拍攝超時、加機位或深夜等特殊需求另行報價');
+    const names={general:'單人單機',dual:'雙人雙機',podcast:'Podcast 雙人雙機＋基本收音'};
+    if(!p||![4,8].includes(Number(s.hours)))throw Error('請選擇拍攝方案');
+    const minutes=Number(s.overtimeMinutes??0);
+    if(!integer(minutes,0,10000))throw Error('請填寫超時分鐘（0至10000的整數）');
+    const base=p[bundled?'bundle':'regular'][Number(s.hours)===8?1:0];
+    if(base==null)manual.push(`${names[kind]} ${s.hours}小時${bundled?'搭配剪輯推廣價':'原價'}待確認，基本拍攝費另行報價`);
+    else add(`基本拍攝費・${names[kind]} ${s.hours}小時${bundled?'（搭配剪輯推廣價）':''}`,base);
+    const billedHours=Math.ceil(minutes/60);
+    add(`拍攝超時 ${minutes}分鐘・計費 ${billedHours}小時 × NT$${p.overtime.toLocaleString()}/小時`,billedHours*p.overtime);
+    notes.push(`拍攝時間包含器材架設、現場測試、正式拍攝及撤場。方案含${s.hours}小時，預估總拍攝時間${Number(s.hours)*60+minutes}分鐘。`,`超時以1小時為最小單位，不足1小時以1小時計；4／8小時方案均為NT$${p.overtime.toLocaleString()}/小時，超時費不適用推廣折扣。`);
+    if(s.shootExtra)manual.push('加機位、深夜拍攝等特殊需求另行報價');
     if(s.travel==='other')manual.push('遠程或例外車馬費人工確認');
     else if(Object.hasOwn(PRICING.travel,s.travel))add('車馬費',PRICING.travel[s.travel]);
     else throw Error('請選擇拍攝地區');
