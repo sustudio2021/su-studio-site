@@ -13,7 +13,7 @@ function syncService(){
  state.shootKind=state.product==='podcast'?'podcast':'general';
  state.service=state.product==='shootOnly'?(state.shootKindOnly==='podcast'?'podcastShoot':'shoot'):state.production==='withShoot'?'bundle':state.product;
 }
-function renderProducts(){document.querySelector('#services').innerHTML=products.map(([v,t,d],i)=>`<label class="service product"><input type="radio" name="product" value="${v}" ${v===state.product?'checked':''}><span><small>0${i+1} / ${v==='shootOnly'?'PRODUCTION':'CONTENT'}</small><strong>${t}</strong><em>${d}</em><b aria-hidden="true">↗</b></span></label>`).join('');}
+function renderProducts(){document.querySelector('#services').innerHTML=products.map(([v,t,d],i)=>`<label class="service product"><input type="radio" name="product" value="${v}" ${v===state.product?'checked':''}><span><small>0${i+1} / ${v==='shootOnly'?'PRODUCTION':'CONTENT'}</small><strong>${t}</strong><em>${d}</em></span></label>`).join('');}
 renderProducts();
 document.querySelector('#line').href=PRICING.line;
 function renderFields(){let html='';
