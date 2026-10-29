@@ -126,3 +126,8 @@ body{isolation:isolate;background:
 .partnership{margin:20px 0 28px;padding:22px;border:1px solid rgba(210,223,174,.3);border-radius:18px;background:linear-gradient(135deg,rgba(81,113,74,.2),rgba(20,41,30,.35))}.partnership[hidden]{display:none}.partnership h3{font-size:17px;font-weight:400;line-height:1.6;margin:14px 0}.partnership>p:not(.eyebrow),.partnership li{font-size:12px;line-height:1.9;color:var(--muted)}.partnership strong{color:#d6dfbf;font-weight:600}.partnership ul{padding-left:18px}.partnership .help{margin-bottom:0}
 
 .check[hidden]{display:none}
+
+/* Align plan actions despite different feature counts. */
+.plan>span{display:flex;flex-direction:column}
+.plan>span>.plan-features{flex:1}
+.plan>span>b{margin-top:auto}
