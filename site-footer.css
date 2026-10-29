@@ -1,0 +1,8 @@
+/* Shared site-wide footer, based on the original HOME footer. */
+footer.site-footer{position:relative;display:block;clear:both;width:100%;max-width:none;margin:0;padding:48px clamp(22px,6vw,88px);border:0;border-top:1px solid rgba(242,244,239,.12);background:#010203;color:rgba(242,244,239,.6);font-family:Inter,Helvetica,"PingFang TC","Microsoft JhengHei",sans-serif;font-size:11px;font-weight:400;line-height:1.6;letter-spacing:.08em;text-align:left;overflow:visible}
+.site-footer .site-footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;width:min(100%,1120px);margin:0 auto;padding:0}
+.site-footer .site-footer-home{display:block;flex-shrink:0;border:0;padding:0;color:inherit;text-decoration:none}
+.site-footer .site-footer-home img{display:block;width:54px;height:auto;opacity:.62;mix-blend-mode:screen}
+.site-footer .site-footer-home:hover img{opacity:1}.site-footer .site-footer-home:focus-visible{outline:2px solid #d2dfae;outline-offset:7px}
+.site-footer .site-footer-tagline{display:block;font-size:11px;font-weight:400;letter-spacing:.08em;color:rgba(242,244,239,.6)}
+@media(max-width:720px){footer.site-footer{padding:36px 20px}.site-footer .site-footer-inner{gap:20px}}

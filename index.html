@@ -1118,14 +1118,18 @@
         .home-kai h2 { animation: none; background: none; color: #e4e6e2; }
       }
     </style>
-  </head>
+  <link rel="stylesheet" href="/site-footer.css">
+<link rel="stylesheet" href="/site-navigation.css">
+</head>
   <body id="top">
     <div class="cursor-light" aria-hidden="true"></div>
     <nav class="site-nav" aria-label="Primary navigation">
       <a href="work.html">WORK</a>
       <a href="about.html">ABOUT</a>
       <a href="/podcast">PODCAST</a>
+
       <a href="/contact">CONTACT</a>
+      <a href="/estimate.html">費用估算</a>
     </nav>
     <main>
       <section class="hero" aria-label="SU STUDIO">
@@ -1223,12 +1227,6 @@
       </section>
     </main>
 
-    <footer id="contact">
-      <div class="footer-line">
-        <img class="footer-logo" src="su-logo.png" alt="SU STUDIO" />
-        <span>Image × Sound × Design</span>
-      </div>
-    </footer>
     <script>
       const cursorLight = document.querySelector(".cursor-light");
       const cursorLightMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -1280,5 +1278,12 @@
         });
       });
     </script>
-  </body>
+
+<footer class="site-footer" id="contact">
+  <div class="site-footer-inner">
+    <a class="site-footer-home" href="/" aria-label="SU STUDIO 首頁"><img src="/su-logo.png" alt="SU STUDIO" width="54"></a>
+    <span class="site-footer-tagline">Image × Sound × Design</span>
+  </div>
+</footer>
+</body>
 </html>
