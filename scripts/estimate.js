@@ -11,6 +11,7 @@ const products=[['youtube','YouTube 影片','長篇內容、訪談與頻道影�
 function syncService(){
  state.edit=state.product;
  state.shootKind=state.product==='podcast'?'podcast':'general';
+ if(state.product==='shootOnly')state.shootKind=state.shootKindOnly||'general';
  state.service=state.product==='shootOnly'?(state.shootKindOnly==='podcast'?'podcastShoot':'shoot'):state.production==='withShoot'?'bundle':state.product;
 }
 function renderProducts(){document.querySelector('#services').innerHTML=products.map(([v,t,d],i)=>`<label class="service product"><input type="radio" name="product" value="${v}" ${v===state.product?'checked':''}><span><small>0${i+1} / ${v==='shootOnly'?'PRODUCTION':'CONTENT'}</small><strong>${t}</strong><em>${d}</em></span></label>`).join('');}
@@ -22,7 +23,7 @@ function renderFields(){let html='';
  html+=select('production','這次需要搭配拍攝嗎？',[['editOnly','我有素材，只需要剪輯／後製'],['withShoot','需要 SU STUDIO 拍攝＋剪輯／後製']]);
  if(state.service==='bundle')html+='<p class="help">'+(state.product==='podcast'?'搭配 Podcast 雙人雙機拍攝。':'搭配一般單機拍攝。')+'使用搭配剪輯推廣拍攝價，剪輯費另列於明細。拍攝以一次方案計算，後製依選擇的件數／集數計算。</p>';
  }else{
- html+=select('shootKindOnly','拍攝類型',[['general','一般單機拍攝'],['podcast','Podcast 雙人雙機拍攝']]);
+ html+=select('shootKindOnly','拍攝類型',[['general','一般單機拍攝'],['dual','雙人雙機拍攝（另行報價）'],['podcast','Podcast 雙人雙機拍攝']]);
  html+='<p class="help">純拍攝交付拍攝原始檔，依純拍攝費率估算。</p>';
  }
  if(isShoot()){

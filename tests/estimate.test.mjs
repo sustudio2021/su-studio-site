@@ -68,3 +68,4 @@ for(const edit of ['youtube','short','event']){
   assert.doesNotMatch(summary(s,r),/原始素材量|標準原始素材/);
  }
 }
+const dual=calculate({...base,service:'shoot',shootKind:'dual'});assert.equal(dual.total,0);assert.ok(dual.needsQuote);assert.match(dual.manual.join(''),/雙人雙機/);

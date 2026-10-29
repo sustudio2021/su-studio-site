@@ -22,11 +22,12 @@ export function calculate(s) {
   const edit=bundled?s.edit:s.service;
   const integer=(v,min,max)=>Number.isInteger(Number(v))&&Number(v)>=min&&Number(v)<=max;
   if(shooting){
-    const kind=s.service==='podcastShoot'?'podcast':bundled?s.shootKind:'general';
+    const kind=s.service==='podcastShoot'?'podcast':s.shootKind==='dual'?'dual':bundled?s.shootKind:'general';
     const p=PRICING.shoot[kind];
-    if(!p||![4,8].includes(Number(s.hours)))throw Error('請選擇拍攝方案');
-    add(`${kind==='podcast'?'Podcast 雙人雙機':'一般單機'}拍攝 ${s.hours} 小時${bundled?'（搭配剪輯推廣價）':''}`,p[bundled?'bundle':'regular'][s.hours===8?1:0]);
-    notes.push(`超時費 NT$${p.overtime.toLocaleString()}/小時；進位方式另行確認。`);
+    if((!p&&kind!=='dual')||![4,8].includes(Number(s.hours)))throw Error('請選擇拍攝方案');
+    if(kind==='dual')manual.push(`雙人雙機拍攝 ${s.hours} 小時，拍攝費及超時費另行報價`);
+    else {add(`${kind==='podcast'?'Podcast 雙人雙機':'一般單機'}拍攝 ${s.hours} 小時${bundled?'（搭配剪輯推廣價）':''}`,p[bundled?'bundle':'regular'][s.hours===8?1:0]);
+    notes.push(`超時費 NT$${p.overtime.toLocaleString()}/小時；進位方式另行確認。`);}
     if(s.shootExtra)manual.push('拍攝超時、加機位或深夜等特殊需求另行報價');
     if(s.travel==='other')manual.push('遠程或例外車馬費人工確認');
     else if(Object.hasOwn(PRICING.travel,s.travel))add('車馬費',PRICING.travel[s.travel]);
