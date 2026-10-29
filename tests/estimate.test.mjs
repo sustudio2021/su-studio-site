@@ -81,11 +81,6 @@ for(const hours of [4,8])for(const kind of ['general','podcast']){
  const s={...base,service:'bundle',shootKind:kind,hours,overtimeMinutes:90};
  assert.equal(calculate(s).total-calculate({...s,overtimeMinutes:0}).total,PRICING.shoot[kind].overtime*2);
 }
-for(const s of [{service:'bundle',hours:4}]){
- const r=calculate({...base,shootKind:'dual',...s});assert.match(r.manual.join(''),/待確認/);
-}
-console.log('All 12 shooting overtime examples, 4/8h rates and unset dual prices passed.');
-
 check({service:'shoot',shootKind:'dual',hours:8},21000);
 check({service:'bundle',shootKind:'dual',hours:8,edit:'event',duration:3},23000);
 for(const [minutes,extra] of [[30,3000],[60,3000],[90,6000],[120,6000]]){

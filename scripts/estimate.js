@@ -1,4 +1,4 @@
-import { PRICING, YOUTUBE_PLANS, SERVICES, calculate, summary } from './estimate-pricing.js';
+import { PRICING, SHOOT_CONFIGS, TRAVEL_REGIONS, YOUTUBE_PLANS, SERVICES, calculate, summary } from './estimate-pricing.js';
 const form=document.querySelector('#estimate-form'), fields=document.querySelector('#fields');
 const state={product:'youtube',production:'editOnly',service:'youtube',shootKind:'general',overtimeMinutes:0,hours:4,travel:'taichung',edit:'youtube',partnership:'none',quantity:1,duration:5,customDuration:5,rawYoutube:'unknown',tier:'basic',raw:'unknown',podcastType:'audio',recording:60,episodes:1,extras:0,subtitle:'none',finished:60,effects:false,shootExtra:false,specialRequest:''};
 const money=n=>`NT$${n.toLocaleString('zh-TW')}`;
@@ -22,17 +22,17 @@ function renderFields(){let html='';
  if(state.product!=='shootOnly'){
  html+=select('production','這次需要搭配拍攝嗎？',[['editOnly','我有素材，只需要剪輯／後製'],['withShoot','需要 SU STUDIO 拍攝＋剪輯／後製']]);
  if(state.service==='bundle'){
- html+=select('bundleKind','拍攝配置',[['general','單人單機'],['dual','雙人雙機'],['podcast','Podcast 雙人雙機＋基本收音']]);
- html+='<p class="help">拍攝費與剪輯費分開列示；雙人雙機8小時搭配剪輯優惠拍攝價為NT$18,000，僅限同時委託拍攝與剪輯，剪輯費另計；4小時搭配剪輯推廣價待確認。</p>';
+ html+=select('bundleKind','拍攝配置',Object.entries(SHOOT_CONFIGS).map(([key,config])=>[key,config.name]));
+ html+='<p class="help">拍攝優惠僅限同時委託SU STUDIO拍攝與剪輯，拍攝費與剪輯費分開計算。</p>';
  }
  }else{
- html+=select('shootKindOnly','拍攝類型',[['general','單人單機'],['dual','雙人雙機'],['podcast','Podcast 雙人雙機＋基本收音']]);
+ html+=select('shootKindOnly','拍攝類型',Object.entries(SHOOT_CONFIGS).map(([key,config])=>[key,config.name]));
  html+='<p class="help">純拍攝交付拍攝原始檔，依純拍攝費率估算。</p>';
  }
  if(isShoot()){
  html+=select('hours','基本拍攝方案',[[4,'4 小時'],[8,'8 小時']]);
  html+=number('overtimeMinutes','預計超過方案的時間（分鐘，無超時填0）',0,10000)+'<p class="help">不足1小時以1小時計費，不提供半小時計費。時間包含架設、測試、拍攝與撤場，超時費不適用推廣折扣。</p>';
- html+=select('travel','拍攝地區（車馬費）',[['taichung','台中市區｜免車馬費'],['near','苗栗／彰化／雲林｜NT$1,500'],['middle','新竹／桃園／嘉義｜NT$2,000'],['far','台北／台南｜NT$2,500'],['other','其他地區、遠程或例外｜人工確認']]);
+ html+=select('travel','拍攝地區（車馬費）',Object.entries(TRAVEL_REGIONS).map(([key,label])=>[key,key==='taichung'||key==='other'?label:`${label}｜${money(PRICING.travel[key])}${key==='far'?'起，依地點確認':''}`]));
  html+='<label class="check"><input type="checkbox" name="shootExtra" '+(state.shootExtra?'checked':'')+'>加機位、深夜拍攝或其他特殊需求</label><p class="help">特殊需求另行報價；一般超時請填寫上方分鐘數，系統會自動估算。</p>';
  }
  if(isShoot()&&state.shootExtra)html+='<label class="field"><span>特殊需求說明（選填）</span><textarea name="specialRequest" rows="3" maxlength="1000" placeholder="例如：預計延長拍攝1小時、希望增加機位，或其他拍攝需求"></textarea></label>';
